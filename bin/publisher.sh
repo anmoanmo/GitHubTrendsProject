@@ -1,24 +1,30 @@
 #!/bin/bash
 
-# 定位项目根目录
 BASE_DIR=$(dirname $(dirname $(readlink -f "$0")))
 DATE_STR=$(date +%F)
 SUMMARY_FILE="$BASE_DIR/data/processed/summary_${DATE_STR}.json"
 WEB_DIR="$BASE_DIR/web"
 HTML_FILE="$WEB_DIR/index.html"
+# 创建专门的下载目录
+DOWNLOAD_DIR="$WEB_DIR/downloads"
+mkdir -p "$DOWNLOAD_DIR"
 
-# 检查数据是否存在
 if [ ! -f "$SUMMARY_FILE" ]; then
     echo "[ERROR] 摘要文件未找到，无法发布。"
     exit 1
 fi
 
-# 使用 Python 单行命令解析 JSON 数据 (Shell 处理 JSON 的技巧)
+# 解析 JSON
 TOP_NAME=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['top_repo_name'])")
 TOP_STARS=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['top_repo_stars'])")
 IMG_PATH=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['img_path'])")
+# 获取原始文件名
+RAW_FILE_NAME=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['raw_file_name'])")
 
-# 生成 HTML 报告 (符合结果发布模块要求) 
+# --- 关键修改：将原始数据复制到 Web 下载目录 ---
+cp "$BASE_DIR/data/raw/$RAW_FILE_NAME" "$DOWNLOAD_DIR/"
+
+# 生成 HTML 报告
 cat > "$HTML_FILE" <<EOF
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -32,7 +38,10 @@ cat > "$HTML_FILE" <<EOF
         .stat-card { background: #f1f8ff; border-left: 5px solid #0366d6; padding: 15px; margin: 20px 0; }
         .highlight { font-weight: bold; color: #0366d6; font-size: 1.2em; }
         img { max-width: 100%; margin-top: 20px; border: 1px solid #e1e4e8; }
+        .download-section { margin-top: 20px; padding: 10px; background: #eef; border-radius: 4px; }
         footer { margin-top: 30px; color: #586069; font-size: 0.9em; text-align: center; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -47,6 +56,13 @@ cat > "$HTML_FILE" <<EOF
         <h3>📊 编程语言热度分布</h3>
         <img src="$IMG_PATH" alt="Trend Chart">
         
+        <div class="download-section">
+            <h3>💾 数据存档</h3>
+            <p>您可以下载今日采集的原始 JSON 数据进行分析：</p>
+            <a href="downloads/$RAW_FILE_NAME" download>⬇️ 点击下载今日数据 ($RAW_FILE_NAME)</a>
+            <p><small>查看历史数据请访问 downloads/ 目录</small></p>
+        </div>
+
         <footer>
             <p>System developed by Linux Course Project | Generated at $(date "+%H:%M:%S")</p>
         </footer>
@@ -55,4 +71,4 @@ cat > "$HTML_FILE" <<EOF
 </html>
 EOF
 
-echo "[INFO] 网页报告已生成: $HTML_FILE"
+echo "[INFO] 网页报告已更新，包含下载链接: $HTML_FILE"
