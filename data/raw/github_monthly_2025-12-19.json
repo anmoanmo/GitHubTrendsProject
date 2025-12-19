@@ -1,0 +1,121 @@
+[
+    {
+        "name": "facebookresearch/sam3",
+        "language": "Python",
+        "stars": 6153,
+        "url": "https://github.com/facebookresearch/sam3",
+        "desc": "Trending item"
+    },
+    {
+        "name": "sansan0/TrendRadar",
+        "language": "Python",
+        "stars": 39681,
+        "url": "https://github.com/sansan0/TrendRadar",
+        "desc": "Trending item"
+    },
+    {
+        "name": "kavishdevar/librepods",
+        "language": "Kotlin",
+        "stars": 22953,
+        "url": "https://github.com/kavishdevar/librepods",
+        "desc": "Trending item"
+    },
+    {
+        "name": "rustfs/rustfs",
+        "language": "Rust",
+        "stars": 17653,
+        "url": "https://github.com/rustfs/rustfs",
+        "desc": "Trending item"
+    },
+    {
+        "name": "microsoft/magentic-ui",
+        "language": "Python",
+        "stars": 9205,
+        "url": "https://github.com/microsoft/magentic-ui",
+        "desc": "Trending item"
+    },
+    {
+        "name": "datawhalechina/hello-agents",
+        "language": "Python",
+        "stars": 10974,
+        "url": "https://github.com/datawhalechina/hello-agents",
+        "desc": "Trending item"
+    },
+    {
+        "name": "anthropics/claude-quickstarts",
+        "language": "Python",
+        "stars": 12529,
+        "url": "https://github.com/anthropics/claude-quickstarts",
+        "desc": "Trending item"
+    },
+    {
+        "name": "facebookresearch/sam-3d-body",
+        "language": "Python",
+        "stars": 2261,
+        "url": "https://github.com/facebookresearch/sam-3d-body",
+        "desc": "Trending item"
+    },
+    {
+        "name": "agentsmd/agents.md",
+        "language": "TypeScript",
+        "stars": 12587,
+        "url": "https://github.com/agentsmd/agents.md",
+        "desc": "Trending item"
+    },
+    {
+        "name": "ostris/ai-toolkit",
+        "language": "Python",
+        "stars": 8332,
+        "url": "https://github.com/ostris/ai-toolkit",
+        "desc": "Trending item"
+    },
+    {
+        "name": "sst/opencode",
+        "language": "TypeScript",
+        "stars": 40300,
+        "url": "https://github.com/sst/opencode",
+        "desc": "Trending item"
+    },
+    {
+        "name": "oven-sh/bun",
+        "language": "Zig",
+        "stars": 85295,
+        "url": "https://github.com/oven-sh/bun",
+        "desc": "Trending item"
+    },
+    {
+        "name": "MemoriLabs/Memori",
+        "language": "Python",
+        "stars": 11147,
+        "url": "https://github.com/MemoriLabs/Memori",
+        "desc": "Trending item"
+    },
+    {
+        "name": "GoogleCloudPlatform/agent-starter-pack",
+        "language": "Python",
+        "stars": 4904,
+        "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
+        "desc": "Trending item"
+    },
+    {
+        "name": "comfyanonymous/ComfyUI",
+        "language": "Python",
+        "stars": 97388,
+        "url": "https://github.com/comfyanonymous/ComfyUI",
+        "desc": "Trending item"
+    },
+    {
+        "name": "Morganamilo/paru",
+        "language": "Rust",
+        "stars": 8018,
+        "url": "https://github.com/Morganamilo/paru",
+        "desc": "Trending item"
+    },
+    {
+        "name": "simstudioai/sim",
+        "language": "TypeScript",
+        "stars": 23657,
+        "url": "https://github.com/simstudioai/sim",
+        "desc": "Trending item"
+    }
+]

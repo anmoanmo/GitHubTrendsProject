@@ -1,0 +1,142 @@
+[
+    {
+        "name": "deepseek-ai/DeepSeek-R1",
+        "language": "Other",
+        "stars": 91601,
+        "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "desc": null
+    },
+    {
+        "name": "FoundationAgents/OpenManus",
+        "language": "Python",
+        "stars": 51372,
+        "url": "https://github.com/FoundationAgents/OpenManus",
+        "desc": "No fortress, purely open ground.  OpenManus is Coming."
+    },
+    {
+        "name": "anthropics/claude-code",
+        "language": "Shell",
+        "stars": 46952,
+        "url": "https://github.com/anthropics/claude-code",
+        "desc": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands."
+    },
+    {
+        "name": "yeongpin/cursor-free-vip",
+        "language": "Python",
+        "stars": 46132,
+        "url": "https://github.com/yeongpin/cursor-free-vip",
+        "desc": "[Support 0.49.x]（Reset Cursor AI MachineID & Bypass Higher Token Limit） Cursor Ai ，自动重置机器ID ， 免费升级使用Pro功能: You've reached your trial request limit. / Too many free trial accounts used on this machine. Please upgrade to pro. We have this limit in place to prevent abuse. Please let us know if you believe this is a mistake."
+    },
+    {
+        "name": "OpenCut-app/OpenCut",
+        "language": "TypeScript",
+        "stars": 44465,
+        "url": "https://github.com/OpenCut-app/OpenCut",
+        "desc": "The open-source CapCut alternative"
+    },
+    {
+        "name": "sst/opencode",
+        "language": "TypeScript",
+        "stars": 40300,
+        "url": "https://github.com/sst/opencode",
+        "desc": "The open source coding agent."
+    },
+    {
+        "name": "sansan0/TrendRadar",
+        "language": "Python",
+        "stars": 39681,
+        "url": "https://github.com/sansan0/TrendRadar",
+        "desc": "🎯 告别信息过载，AI 助你看懂新闻资讯热点，简单的舆情监控分析 - 多平台热点聚合+基于 MCP 的AI分析工具。监控35个平台（抖音、知乎、B站、华尔街见闻、财联社等），智能筛选+自动推送+AI对话分析（用自然语言深度挖掘新闻：趋势追踪、情感分析、相似检索等13种工具）。支持企业微信/个人微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 推送，1分钟手机通知，无需编程。支持Docker部署，支持数据远程云存储⭐ 让算法为你服务，用AI理解热点"
+    },
+    {
+        "name": "upstash/context7",
+        "language": "TypeScript",
+        "stars": 39609,
+        "url": "https://github.com/upstash/context7",
+        "desc": "Context7 MCP Server -- Up-to-date code documentation for LLMs and AI code editors"
+    },
+    {
+        "name": "TauricResearch/TradingAgents",
+        "language": "Python",
+        "stars": 26758,
+        "url": "https://github.com/TauricResearch/TradingAgents",
+        "desc": "TradingAgents: Multi-Agents LLM Financial Trading Framework"
+    },
+    {
+        "name": "bmad-code-org/BMAD-METHOD",
+        "language": "JavaScript",
+        "stars": 25586,
+        "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+        "desc": "Breakthrough Method for Agile Ai Driven Development"
+    },
+    {
+        "name": "github/github-mcp-server",
+        "language": "Go",
+        "stars": 25280,
+        "url": "https://github.com/github/github-mcp-server",
+        "desc": "GitHub's official MCP Server"
+    },
+    {
+        "name": "microsoft/playwright-mcp",
+        "language": "TypeScript",
+        "stars": 24528,
+        "url": "https://github.com/microsoft/playwright-mcp",
+        "desc": "Playwright MCP server"
+    },
+    {
+        "name": "asgeirtj/system_prompts_leaks",
+        "language": "Roff",
+        "stars": 24337,
+        "url": "https://github.com/asgeirtj/system_prompts_leaks",
+        "desc": "Collection of extracted System Prompts from popular chatbots like ChatGPT, Claude & Gemini"
+    },
+    {
+        "name": "eyaltoledano/claude-task-master",
+        "language": "JavaScript",
+        "stars": 24333,
+        "url": "https://github.com/eyaltoledano/claude-task-master",
+        "desc": "An AI-powered task-management system you can drop into Cursor, Lovable, Windsurf, Roo, and others."
+    },
+    {
+        "name": "huggingface/agents-course",
+        "language": "MDX",
+        "stars": 24279,
+        "url": "https://github.com/huggingface/agents-course",
+        "desc": "This repository contains the Hugging Face Agents Course. "
+    },
+    {
+        "name": "Fosowl/agenticSeek",
+        "language": "Python",
+        "stars": 24109,
+        "url": "https://github.com/Fosowl/agenticSeek",
+        "desc": "Fully Local Manus AI. No APIs, No $200 monthly bills. Enjoy an autonomous agent that thinks, browses the web, and code for the sole cost of electricity. 🔔 Official updates only via twitter @Martin993886460 (Beware of fake account)"
+    },
+    {
+        "name": "musistudio/claude-code-router",
+        "language": "TypeScript",
+        "stars": 23679,
+        "url": "https://github.com/musistudio/claude-code-router",
+        "desc": "Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic."
+    },
+    {
+        "name": "simstudioai/sim",
+        "language": "TypeScript",
+        "stars": 23657,
+        "url": "https://github.com/simstudioai/sim",
+        "desc": "Open-source platform to build and deploy AI agent workflows."
+    },
+    {
+        "name": "wshobson/agents",
+        "language": "Python",
+        "stars": 23069,
+        "url": "https://github.com/wshobson/agents",
+        "desc": "Intelligent automation and multi-agent orchestration for Claude Code"
+    },
+    {
+        "name": "apple/container",
+        "language": "Swift",
+        "stars": 22802,
+        "url": "https://github.com/apple/container",
+        "desc": "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon. "
+    }
+]

@@ -1,0 +1,93 @@
+[
+    {
+        "name": "simstudioai/sim",
+        "language": "TypeScript",
+        "stars": 23657,
+        "url": "https://github.com/simstudioai/sim",
+        "desc": "Trending item"
+    },
+    {
+        "name": "thedotmack/claude-mem",
+        "language": "TypeScript",
+        "stars": 8162,
+        "url": "https://github.com/thedotmack/claude-mem",
+        "desc": "Trending item"
+    },
+    {
+        "name": "DayuanJiang/next-ai-draw-io",
+        "language": "TypeScript",
+        "stars": 13548,
+        "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+        "desc": "Trending item"
+    },
+    {
+        "name": "Tencent/WeKnora",
+        "language": "Go",
+        "stars": 9474,
+        "url": "https://github.com/Tencent/WeKnora",
+        "desc": "Trending item"
+    },
+    {
+        "name": "anthropics/claude-code",
+        "language": "Shell",
+        "stars": 46952,
+        "url": "https://github.com/anthropics/claude-code",
+        "desc": "Trending item"
+    },
+    {
+        "name": "tursodatabase/turso",
+        "language": "Rust",
+        "stars": 15826,
+        "url": "https://github.com/tursodatabase/turso",
+        "desc": "Trending item"
+    },
+    {
+        "name": "agentsmd/agents.md",
+        "language": "TypeScript",
+        "stars": 12587,
+        "url": "https://github.com/agentsmd/agents.md",
+        "desc": "Trending item"
+    },
+    {
+        "name": "jellyfin/jellyfin-desktop",
+        "language": "C++",
+        "stars": 4980,
+        "url": "https://github.com/jellyfin/jellyfin-desktop",
+        "desc": "Trending item"
+    },
+    {
+        "name": "datawhalechina/hello-agents",
+        "language": "Python",
+        "stars": 10974,
+        "url": "https://github.com/datawhalechina/hello-agents",
+        "desc": "Trending item"
+    },
+    {
+        "name": "ChromeDevTools/chrome-devtools-mcp",
+        "language": "TypeScript",
+        "stars": 17223,
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "desc": "Trending item"
+    },
+    {
+        "name": "mindsdb/mindsdb",
+        "language": "Python",
+        "stars": 38063,
+        "url": "https://github.com/mindsdb/mindsdb",
+        "desc": "Trending item"
+    },
+    {
+        "name": "CopilotKit/CopilotKit",
+        "language": "TypeScript",
+        "stars": 27051,
+        "url": "https://github.com/CopilotKit/CopilotKit",
+        "desc": "Trending item"
+    },
+    {
+        "name": "resemble-ai/chatterbox",
+        "language": "Python",
+        "stars": 16376,
+        "url": "https://github.com/resemble-ai/chatterbox",
+        "desc": "Trending item"
+    }
+]

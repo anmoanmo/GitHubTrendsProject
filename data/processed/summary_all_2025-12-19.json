@@ -1,0 +1,406 @@
+{
+    "date": "2025-12-19",
+    "update_time": "19:22:50",
+    "data": {
+        "daily": {
+            "period": "daily",
+            "top_repo_name": "jaywcjlove/awesome-mac",
+            "top_repo_stars": 96137,
+            "top_repo_url": "https://github.com/jaywcjlove/awesome-mac",
+            "top_lang": "Python",
+            "img_filename": "trend_daily_2025-12-19.png",
+            "repos": [
+                {
+                    "name": "jaywcjlove/awesome-mac",
+                    "language": "JavaScript",
+                    "stars": 96137,
+                    "url": "https://github.com/jaywcjlove/awesome-mac",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "swisskyrepo/PayloadsAllTheThings",
+                    "language": "Python",
+                    "stars": 72414,
+                    "url": "https://github.com/swisskyrepo/PayloadsAllTheThings",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "anthropics/claude-code",
+                    "language": "Shell",
+                    "stars": 46952,
+                    "url": "https://github.com/anthropics/claude-code",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "metabase/metabase",
+                    "language": "Clojure",
+                    "stars": 45030,
+                    "url": "https://github.com/metabase/metabase",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "exo-explore/exo",
+                    "language": "Python",
+                    "stars": 33282,
+                    "url": "https://github.com/exo-explore/exo",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "afshinea/stanford-cs-229-machine-learning",
+                    "language": "Other",
+                    "stars": 18898,
+                    "url": "https://github.com/afshinea/stanford-cs-229-machine-learning",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "GreyDGL/PentestGPT",
+                    "language": "Python",
+                    "stars": 9447,
+                    "url": "https://github.com/GreyDGL/PentestGPT",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "sgl-project/mini-sglang",
+                    "language": "Python",
+                    "stars": 1297,
+                    "url": "https://github.com/sgl-project/mini-sglang",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "NVIDIA-NeMo/Gym",
+                    "language": "Python",
+                    "stars": 375,
+                    "url": "https://github.com/NVIDIA-NeMo/Gym",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "google/adk-js",
+                    "language": "TypeScript",
+                    "stars": 242,
+                    "url": "https://github.com/google/adk-js",
+                    "desc": "Trending item"
+                }
+            ]
+        },
+        "weekly": {
+            "period": "weekly",
+            "top_repo_name": "anthropics/claude-code",
+            "top_repo_stars": 46952,
+            "top_repo_url": "https://github.com/anthropics/claude-code",
+            "top_lang": "TypeScript",
+            "img_filename": "trend_weekly_2025-12-19.png",
+            "repos": [
+                {
+                    "name": "anthropics/claude-code",
+                    "language": "Shell",
+                    "stars": 46952,
+                    "url": "https://github.com/anthropics/claude-code",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "mindsdb/mindsdb",
+                    "language": "Python",
+                    "stars": 38063,
+                    "url": "https://github.com/mindsdb/mindsdb",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "CopilotKit/CopilotKit",
+                    "language": "TypeScript",
+                    "stars": 27051,
+                    "url": "https://github.com/CopilotKit/CopilotKit",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "simstudioai/sim",
+                    "language": "TypeScript",
+                    "stars": 23657,
+                    "url": "https://github.com/simstudioai/sim",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "ChromeDevTools/chrome-devtools-mcp",
+                    "language": "TypeScript",
+                    "stars": 17223,
+                    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "resemble-ai/chatterbox",
+                    "language": "Python",
+                    "stars": 16376,
+                    "url": "https://github.com/resemble-ai/chatterbox",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "tursodatabase/turso",
+                    "language": "Rust",
+                    "stars": 15826,
+                    "url": "https://github.com/tursodatabase/turso",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "DayuanJiang/next-ai-draw-io",
+                    "language": "TypeScript",
+                    "stars": 13548,
+                    "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "agentsmd/agents.md",
+                    "language": "TypeScript",
+                    "stars": 12587,
+                    "url": "https://github.com/agentsmd/agents.md",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "datawhalechina/hello-agents",
+                    "language": "Python",
+                    "stars": 10974,
+                    "url": "https://github.com/datawhalechina/hello-agents",
+                    "desc": "Trending item"
+                }
+            ]
+        },
+        "monthly": {
+            "period": "monthly",
+            "top_repo_name": "comfyanonymous/ComfyUI",
+            "top_repo_stars": 97388,
+            "top_repo_url": "https://github.com/comfyanonymous/ComfyUI",
+            "top_lang": "Python",
+            "img_filename": "trend_monthly_2025-12-19.png",
+            "repos": [
+                {
+                    "name": "comfyanonymous/ComfyUI",
+                    "language": "Python",
+                    "stars": 97388,
+                    "url": "https://github.com/comfyanonymous/ComfyUI",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "oven-sh/bun",
+                    "language": "Zig",
+                    "stars": 85295,
+                    "url": "https://github.com/oven-sh/bun",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "sst/opencode",
+                    "language": "TypeScript",
+                    "stars": 40300,
+                    "url": "https://github.com/sst/opencode",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "sansan0/TrendRadar",
+                    "language": "Python",
+                    "stars": 39681,
+                    "url": "https://github.com/sansan0/TrendRadar",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "simstudioai/sim",
+                    "language": "TypeScript",
+                    "stars": 23657,
+                    "url": "https://github.com/simstudioai/sim",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "kavishdevar/librepods",
+                    "language": "Kotlin",
+                    "stars": 22953,
+                    "url": "https://github.com/kavishdevar/librepods",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "rustfs/rustfs",
+                    "language": "Rust",
+                    "stars": 17653,
+                    "url": "https://github.com/rustfs/rustfs",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "agentsmd/agents.md",
+                    "language": "TypeScript",
+                    "stars": 12587,
+                    "url": "https://github.com/agentsmd/agents.md",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "anthropics/claude-quickstarts",
+                    "language": "Python",
+                    "stars": 12529,
+                    "url": "https://github.com/anthropics/claude-quickstarts",
+                    "desc": "Trending item"
+                },
+                {
+                    "name": "MemoriLabs/Memori",
+                    "language": "Python",
+                    "stars": 11147,
+                    "url": "https://github.com/MemoriLabs/Memori",
+                    "desc": "Trending item"
+                }
+            ]
+        },
+        "yearly": {
+            "period": "yearly",
+            "top_repo_name": "deepseek-ai/DeepSeek-R1",
+            "top_repo_stars": 91601,
+            "top_repo_url": "https://github.com/deepseek-ai/DeepSeek-R1",
+            "top_lang": "Python",
+            "img_filename": "trend_yearly_2025-12-19.png",
+            "repos": [
+                {
+                    "name": "deepseek-ai/DeepSeek-R1",
+                    "language": "Other",
+                    "stars": 91601,
+                    "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+                    "desc": null
+                },
+                {
+                    "name": "FoundationAgents/OpenManus",
+                    "language": "Python",
+                    "stars": 51372,
+                    "url": "https://github.com/FoundationAgents/OpenManus",
+                    "desc": "No fortress, purely open ground.  OpenManus is Coming."
+                },
+                {
+                    "name": "anthropics/claude-code",
+                    "language": "Shell",
+                    "stars": 46952,
+                    "url": "https://github.com/anthropics/claude-code",
+                    "desc": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands."
+                },
+                {
+                    "name": "yeongpin/cursor-free-vip",
+                    "language": "Python",
+                    "stars": 46132,
+                    "url": "https://github.com/yeongpin/cursor-free-vip",
+                    "desc": "[Support 0.49.x]（Reset Cursor AI MachineID & Bypass Higher Token Limit） Cursor Ai ，自动重置机器ID ， 免费升级使用Pro功能: You've reached your trial request limit. / Too many free trial accounts used on this machine. Please upgrade to pro. We have this limit in place to prevent abuse. Please let us know if you believe this is a mistake."
+                },
+                {
+                    "name": "OpenCut-app/OpenCut",
+                    "language": "TypeScript",
+                    "stars": 44465,
+                    "url": "https://github.com/OpenCut-app/OpenCut",
+                    "desc": "The open-source CapCut alternative"
+                },
+                {
+                    "name": "sst/opencode",
+                    "language": "TypeScript",
+                    "stars": 40300,
+                    "url": "https://github.com/sst/opencode",
+                    "desc": "The open source coding agent."
+                },
+                {
+                    "name": "sansan0/TrendRadar",
+                    "language": "Python",
+                    "stars": 39681,
+                    "url": "https://github.com/sansan0/TrendRadar",
+                    "desc": "🎯 告别信息过载，AI 助你看懂新闻资讯热点，简单的舆情监控分析 - 多平台热点聚合+基于 MCP 的AI分析工具。监控35个平台（抖音、知乎、B站、华尔街见闻、财联社等），智能筛选+自动推送+AI对话分析（用自然语言深度挖掘新闻：趋势追踪、情感分析、相似检索等13种工具）。支持企业微信/个人微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 推送，1分钟手机通知，无需编程。支持Docker部署，支持数据远程云存储⭐ 让算法为你服务，用AI理解热点"
+                },
+                {
+                    "name": "upstash/context7",
+                    "language": "TypeScript",
+                    "stars": 39609,
+                    "url": "https://github.com/upstash/context7",
+                    "desc": "Context7 MCP Server -- Up-to-date code documentation for LLMs and AI code editors"
+                },
+                {
+                    "name": "TauricResearch/TradingAgents",
+                    "language": "Python",
+                    "stars": 26758,
+                    "url": "https://github.com/TauricResearch/TradingAgents",
+                    "desc": "TradingAgents: Multi-Agents LLM Financial Trading Framework"
+                },
+                {
+                    "name": "bmad-code-org/BMAD-METHOD",
+                    "language": "JavaScript",
+                    "stars": 25586,
+                    "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+                    "desc": "Breakthrough Method for Agile Ai Driven Development"
+                }
+            ]
+        },
+        "all": {
+            "period": "all",
+            "top_repo_name": "codecrafters-io/build-your-own-x",
+            "top_repo_stars": 450073,
+            "top_repo_url": "https://github.com/codecrafters-io/build-your-own-x",
+            "top_lang": "Python",
+            "img_filename": "trend_all_2025-12-19.png",
+            "repos": [
+                {
+                    "name": "codecrafters-io/build-your-own-x",
+                    "language": "Markdown",
+                    "stars": 450073,
+                    "url": "https://github.com/codecrafters-io/build-your-own-x",
+                    "desc": "Master programming by recreating your favorite technologies from scratch."
+                },
+                {
+                    "name": "freeCodeCamp/freeCodeCamp",
+                    "language": "TypeScript",
+                    "stars": 434977,
+                    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+                    "desc": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free."
+                },
+                {
+                    "name": "sindresorhus/awesome",
+                    "language": "Other",
+                    "stars": 423473,
+                    "url": "https://github.com/sindresorhus/awesome",
+                    "desc": "😎 Awesome lists about all kinds of interesting topics"
+                },
+                {
+                    "name": "public-apis/public-apis",
+                    "language": "Python",
+                    "stars": 386644,
+                    "url": "https://github.com/public-apis/public-apis",
+                    "desc": "A collective list of free APIs"
+                },
+                {
+                    "name": "EbookFoundation/free-programming-books",
+                    "language": "Python",
+                    "stars": 379030,
+                    "url": "https://github.com/EbookFoundation/free-programming-books",
+                    "desc": ":books: Freely available programming books"
+                },
+                {
+                    "name": "kamranahmedse/developer-roadmap",
+                    "language": "TypeScript",
+                    "stars": 345698,
+                    "url": "https://github.com/kamranahmedse/developer-roadmap",
+                    "desc": "Interactive roadmaps, guides and other educational content to help developers grow in their careers."
+                },
+                {
+                    "name": "jwasham/coding-interview-university",
+                    "language": "Other",
+                    "stars": 334906,
+                    "url": "https://github.com/jwasham/coding-interview-university",
+                    "desc": "A complete computer science study plan to become a software engineer."
+                },
+                {
+                    "name": "donnemartin/system-design-primer",
+                    "language": "Python",
+                    "stars": 329696,
+                    "url": "https://github.com/donnemartin/system-design-primer",
+                    "desc": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards."
+                },
+                {
+                    "name": "996icu/996.ICU",
+                    "language": "Other",
+                    "stars": 275044,
+                    "url": "https://github.com/996icu/996.ICU",
+                    "desc": "Repo for counting stars and contributing. Press F to pay respect to glorious developers."
+                },
+                {
+                    "name": "vinta/awesome-python",
+                    "language": "Python",
+                    "stars": 274436,
+                    "url": "https://github.com/vinta/awesome-python",
+                    "desc": "An opinionated list of awesome Python frameworks, libraries, software and resources."
+                }
+            ]
+        }
+    }
+}

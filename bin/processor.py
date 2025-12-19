@@ -1,90 +1,90 @@
 import json
 import os
 import datetime
+import matplotlib
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATE_STR = datetime.datetime.now().strftime("%Y-%m-%d")
-
-# 定义各级目录
 RAW_DIR = os.path.join(BASE_DIR, "data/raw")
-ARCHIVE_DIR = os.path.join(BASE_DIR, "data/archive")
 PROCESSED_DIR = os.path.join(BASE_DIR, "data/processed")
-WEB_STATIC_DIR = os.path.join(BASE_DIR, "web/static")
+STATIC_DIR = os.path.join(BASE_DIR, "web/static")
 
-# 确保目录存在
-for d in [ARCHIVE_DIR, PROCESSED_DIR, WEB_STATIC_DIR]:
+for d in [PROCESSED_DIR, STATIC_DIR]:
     if not os.path.exists(d):
         os.makedirs(d)
 
-RAW_FILE = os.path.join(RAW_DIR, f"github_trending_{DATE_STR}.json")
-HISTORY_FILE = os.path.join(ARCHIVE_DIR, "history_all.json")
-IMG_OUTPUT = os.path.join(WEB_STATIC_DIR, f"trend_{DATE_STR}.png")
-SUMMARY_FILE = os.path.join(PROCESSED_DIR, f"summary_{DATE_STR}.json")
+SUMMARY_FILE = os.path.join(PROCESSED_DIR, f"summary_all_{DATE_STR}.json")
 
 
-def process_data():
-    if not os.path.exists(RAW_FILE):
-        print(f"[ERROR] 今日原始数据不存在: {RAW_FILE}")
-        exit(1)
+def process_single_period(period):
+    filename = f"github_{period}_{DATE_STR}.json"
+    filepath = os.path.join(RAW_DIR, filename)
 
-    with open(RAW_FILE, "r", encoding="utf-8") as f:
-        today_data = json.load(f)
+    if not os.path.exists(filepath):
+        return None
 
-    if not today_data:
-        print("[ERROR] 数据为空，跳过处理")
-        exit(1)
+    with open(filepath, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    # --- 任务1：追加合并历史数据 ---
-    history_data = []
-    if os.path.exists(HISTORY_FILE):
-        try:
-            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-                history_data = json.load(f)
-        except json.JSONDecodeError:
-            print("[WARN] 历史数据损坏，将重新创建")
-            history_data = []
+    if not data:
+        return None
 
-    history_data.extend(today_data)
-    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        json.dump(history_data, f, ensure_ascii=False)
+    data.sort(key=lambda x: x["stars"], reverse=True)
+    top_repo = data[0]
 
-    # --- 任务2：分析语言热度 ---
     lang_counts = {}
-    top_repo = today_data[0]
-
-    for repo in today_data:
+    for repo in data:
         lang = repo["language"]
-        lang_counts[lang] = lang_counts.get(lang, 0) + 1
-        if repo["stars"] > top_repo["stars"]:
-            top_repo = repo
+        if lang and lang != "Other":
+            lang_counts[lang] = lang_counts.get(lang, 0) + 1
 
-    # --- 任务3：生成可视化图表 ---
-    plt.figure(figsize=(10, 6))
-    # 按照数量排序，让图表更好看
+    top_lang = max(lang_counts, key=lang_counts.get) if lang_counts else "N/A"
+
+    img_name = f"trend_{period}_{DATE_STR}.png"
+    img_path = os.path.join(STATIC_DIR, img_name)
+
+    plt.figure(figsize=(8, 5))
     sorted_langs = dict(
-        sorted(lang_counts.items(), key=lambda item: item[1], reverse=True)[:10]
-    )  # 只取前10
-    plt.bar(sorted_langs.keys(), sorted_langs.values(), color="skyblue")
-    plt.title(f"GitHub Top 10 Trending Languages ({DATE_STR})")
-    plt.xticks(rotation=45)
+        sorted(lang_counts.items(), key=lambda item: item[1], reverse=True)[:8]
+    )
+    plt.bar(sorted_langs.keys(), sorted_langs.values(), color="#6c5ce7")
+    plt.title(f"GitHub Languages ({period.capitalize()})")
+    plt.xticks(rotation=30)
     plt.tight_layout()
-    plt.savefig(IMG_OUTPUT)
+    plt.savefig(img_path)
+    plt.close()
 
-    # --- 任务4：输出简报数据 ---
-    summary = {
-        "date": DATE_STR,
+    return {
+        "period": period,
         "top_repo_name": top_repo["name"],
         "top_repo_stars": top_repo["stars"],
-        "top_lang": max(lang_counts, key=lang_counts.get),
-        "img_path": f"static/trend_{DATE_STR}.png",
-        "raw_file_name": f"github_trending_{DATE_STR}.json",  # 传递文件名给发布模块
+        "top_repo_url": top_repo.get("url", "#"),  # 新增：传递 URL
+        "top_lang": top_lang,
+        "img_filename": img_name,
+        "repos": data[:10],
     }
-    with open(SUMMARY_FILE, "w", encoding="utf-8") as f:
-        json.dump(summary, f, ensure_ascii=False)
 
-    print(f"[INFO] 处理完成，图表已生成: {IMG_OUTPUT}")
+
+def run_processor():
+    periods = ["daily", "weekly", "monthly", "yearly", "all"]
+    final_summary = {
+        "date": DATE_STR,
+        "update_time": datetime.datetime.now().strftime("%H:%M:%S"),
+        "data": {},
+    }
+
+    print(">>> 开始处理数据...")
+    for p in periods:
+        res = process_single_period(p)
+        final_summary["data"][p] = res
+
+    with open(SUMMARY_FILE, "w", encoding="utf-8") as f:
+        json.dump(final_summary, f, ensure_ascii=False, indent=4)
+    print(f"[SUCCESS] 汇总数据已写入: {SUMMARY_FILE}")
 
 
 if __name__ == "__main__":
-    process_data()
+    run_processor()

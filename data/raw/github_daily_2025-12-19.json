@@ -1,0 +1,72 @@
+[
+    {
+        "name": "jaywcjlove/awesome-mac",
+        "language": "JavaScript",
+        "stars": 96137,
+        "url": "https://github.com/jaywcjlove/awesome-mac",
+        "desc": "Trending item"
+    },
+    {
+        "name": "anthropics/claude-code",
+        "language": "Shell",
+        "stars": 46952,
+        "url": "https://github.com/anthropics/claude-code",
+        "desc": "Trending item"
+    },
+    {
+        "name": "NVIDIA-NeMo/Gym",
+        "language": "Python",
+        "stars": 375,
+        "url": "https://github.com/NVIDIA-NeMo/Gym",
+        "desc": "Trending item"
+    },
+    {
+        "name": "GreyDGL/PentestGPT",
+        "language": "Python",
+        "stars": 9447,
+        "url": "https://github.com/GreyDGL/PentestGPT",
+        "desc": "Trending item"
+    },
+    {
+        "name": "exo-explore/exo",
+        "language": "Python",
+        "stars": 33282,
+        "url": "https://github.com/exo-explore/exo",
+        "desc": "Trending item"
+    },
+    {
+        "name": "swisskyrepo/PayloadsAllTheThings",
+        "language": "Python",
+        "stars": 72414,
+        "url": "https://github.com/swisskyrepo/PayloadsAllTheThings",
+        "desc": "Trending item"
+    },
+    {
+        "name": "sgl-project/mini-sglang",
+        "language": "Python",
+        "stars": 1297,
+        "url": "https://github.com/sgl-project/mini-sglang",
+        "desc": "Trending item"
+    },
+    {
+        "name": "google/adk-js",
+        "language": "TypeScript",
+        "stars": 242,
+        "url": "https://github.com/google/adk-js",
+        "desc": "Trending item"
+    },
+    {
+        "name": "afshinea/stanford-cs-229-machine-learning",
+        "language": "Other",
+        "stars": 18898,
+        "url": "https://github.com/afshinea/stanford-cs-229-machine-learning",
+        "desc": "Trending item"
+    },
+    {
+        "name": "metabase/metabase",
+        "language": "Clojure",
+        "stars": 45030,
+        "url": "https://github.com/metabase/metabase",
+        "desc": "Trending item"
+    }
+]

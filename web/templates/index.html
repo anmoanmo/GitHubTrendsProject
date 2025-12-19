@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 全网热度监控</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .header-bg {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 50px;
+            padding: 10px 25px;
+            margin-right: 10px;
+            color: #555;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #2a5298;
+            color: white;
+            border-color: #2a5298;
+        }
+
+        /* 链接去下划线样式 */
+        a.repo-link {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a.repo-link:hover {
+            color: #0d6efd;
+            text-decoration: underline;
+        }
+
+        .repo-item {
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .repo-item:hover {
+            background-color: #f1f3f5;
+            border-left-color: #2a5298;
+        }
+
+        .loading-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-mask" id="loadingMask">
+        <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"></div>
+        <h3 class="mt-3">正在全网扫描数据...</h3>
+        <p class="text-muted">正在修正 Unknown 数据并抓取链接，请稍候...</p>
+    </div>
+
+    <div class="header-bg text-center shadow">
+        <div class="container">
+            <h1 class="fw-bold"><i class="bi bi-github"></i> GitHub Trends Hub</h1>
+            <p class="opacity-75">全维度开源项目热度分析系统</p>
+            {% if summary %}
+            <span class="badge bg-warning text-dark"><i class="bi bi-clock"></i> 更新于: {{ summary.update_time }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="text-secondary">数据日期: {{ summary.date if summary else '---' }}</h5>
+            <button onclick="refreshData()" class="btn btn-primary rounded-pill shadow-sm px-4">
+                <i class="bi bi-arrow-repeat"></i> 立即更新全量数据
+            </button>
+        </div>
+
+        {% if summary and summary.data %}
+        <ul class="nav nav-pills mb-4 justify-content-center" id="trendTabs" role="tablist">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daily">📅
+                    最近一天</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#weekly">📅
+                    最近一周</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#monthly">📅
+                    最近一月</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#yearly">🏆
+                    最近一年</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#all">🔥 历史全部</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            {% for period in ['daily', 'weekly', 'monthly', 'yearly', 'all'] %}
+            <div class="tab-pane fade {% if period == 'daily' %}show active{% endif %}" id="{{ period }}">
+                {% set info = summary.data[period] %}
+                {% if info %}
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <div class="card shadow-sm border-0 mb-4 bg-primary text-white">
+                            <div class="card-body p-4">
+                                <h6 class="opacity-75">TOP 1 项目</h6>
+                                <h3 class="fw-bold mb-3 text-break">
+                                    <a href="{{ info.top_repo_url }}" target="_blank"
+                                        class="text-white text-decoration-none">
+                                        <i class="bi bi-link-45deg"></i> {{ info.top_repo_name }}
+                                    </a>
+                                </h3>
+                                <div class="d-flex justify-content-between">
+                                    <span><i class="bi bi-star-fill"></i> {{ info.top_repo_stars }} Stars</span>
+                                    <span><i class="bi bi-code-slash"></i> {{ info.top_lang }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body text-center">
+                                <h6 class="text-muted text-start mb-3">编程语言分布</h6>
+                                <img src="{{ url_for('static', filename=info.img_filename) }}" class="img-fluid rounded"
+                                    alt="Chart">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-header bg-white py-3">
+                                <h6 class="mb-0 fw-bold"><i class="bi bi-list-ol"></i> 排行榜 (Top 10)</h6>
+                            </div>
+                            <div class="list-group list-group-flush">
+                                {% for repo in info.repos %}
+                                <div class="list-group-item repo-item py-3">
+                                    <div class="d-flex w-100 justify-content-between align-items-center">
+                                        <div style="min-width: 0;">
+                                            <h6 class="mb-1 fw-bold text-truncate">
+                                                <span class="text-muted me-2">{{ loop.index }}.</span>
+                                                <a href="{{ repo.url }}" target="_blank" class="repo-link text-primary">
+                                                    {{ repo.name }}
+                                                </a>
+                                            </h6>
+                                            <small class="text-muted"><span class="badge bg-light text-dark border">{{
+                                                    repo.language }}</span></small>
+                                        </div>
+                                        <span class="fw-bold text-warning ms-2" style="white-space: nowrap;">
+                                            <i class="bi bi-star"></i> {{ repo.stars }}
+                                        </span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="alert alert-warning text-center">
+                    该时间段数据暂未采集，请点击“立即更新”。
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="text-center py-5">
+            <h3>暂无数据</h3>
+            <p class="text-muted">请点击上方“立即更新全量数据”按钮。</p>
+        </div>
+        {% endif %}
+
+        <footer class="mt-5 mb-3 text-center text-muted small">
+            &copy; 2025 GitHub Trends Project
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function refreshData() {
+            if (!confirm("准备开始采集数据？\n(这将抓取 GitHub 链接并修复 Unknown 问题，耗时约 20 秒)")) return;
+
+            document.getElementById('loadingMask').style.display = 'flex';
+
+            fetch('/run_task', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        alert('错误: ' + data.message);
+                        document.getElementById('loadingMask').style.display = 'none';
+                    }
+                })
+                .catch(err => {
+                    alert('网络错误');
+                    document.getElementById('loadingMask').style.display = 'none';
+                });
+        }
+    </script>
+</body>
+
+</html>
