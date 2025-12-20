@@ -1,74 +1,86 @@
 #!/bin/bash
 
+# ========================================================
+# 模块名称：处理结果发布模块 (Publisher)
+# 对应文档：(3) 处理结果发布模块 -> “保存至 Web 服务器目录 + 维护按日期下载的页面”
+# ========================================================
+
 BASE_DIR=$(dirname $(dirname $(readlink -f "$0")))
 DATE_STR=$(date +%F)
-SUMMARY_FILE="$BASE_DIR/data/processed/summary_${DATE_STR}.json"
-WEB_DIR="$BASE_DIR/web"
-HTML_FILE="$WEB_DIR/index.html"
-# 创建专门的下载目录
-DOWNLOAD_DIR="$WEB_DIR/downloads"
+
+# 输入文件
+SUMMARY_FILE="$BASE_DIR/data/processed/summary_all_${DATE_STR}.json"
+
+# --- 关键修改：将发布目录统一到 web/static 下 ---
+# 这样 Flask 启动后，浏览器才能直接访问这些文件
+WEB_STATIC_DIR="$BASE_DIR/web/static"
+REPORT_DIR="$WEB_STATIC_DIR/reports"
+DOWNLOAD_DIR="$WEB_STATIC_DIR/downloads"
+
+mkdir -p "$REPORT_DIR"
 mkdir -p "$DOWNLOAD_DIR"
 
+# 1. 检查数据源
 if [ ! -f "$SUMMARY_FILE" ]; then
-    echo "[ERROR] 摘要文件未找到，无法发布。"
+    echo "[ERROR] 摘要文件未找到: $SUMMARY_FILE"
     exit 1
 fi
 
-# 解析 JSON
-TOP_NAME=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['top_repo_name'])")
-TOP_STARS=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['top_repo_stars'])")
-IMG_PATH=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['img_path'])")
-# 获取原始文件名
-RAW_FILE_NAME=$(python3 -c "import json; print(json.load(open('$SUMMARY_FILE'))['raw_file_name'])")
+# 2. 提取数据用于生成报告
+TOP_NAME=$(python3 -c "import json; d=json.load(open('$SUMMARY_FILE')); print(d.get('data',{}).get('daily',{}).get('top_repo',{}).get('name', 'N/A'))")
+TOP_STARS=$(python3 -c "import json; d=json.load(open('$SUMMARY_FILE')); print(d.get('data',{}).get('daily',{}).get('top_repo',{}).get('stars_total', 0))")
 
-# --- 关键修改：将原始数据复制到 Web 下载目录 ---
-cp "$BASE_DIR/data/raw/$RAW_FILE_NAME" "$DOWNLOAD_DIR/"
+# 3. 发布原始数据 (满足“按日期下载”要求)
+RAW_FILE_NAME="github_daily_${DATE_STR}.json"
+# 优先找当天的原始爬取数据，找不到则用摘要数据兜底
+if [ -f "$BASE_DIR/data/raw/$RAW_FILE_NAME" ]; then
+    cp "$BASE_DIR/data/raw/$RAW_FILE_NAME" "$DOWNLOAD_DIR/"
+else
+    cp "$SUMMARY_FILE" "$DOWNLOAD_DIR/$RAW_FILE_NAME"
+fi
 
-# 生成 HTML 报告
-cat > "$HTML_FILE" <<EOF
+# 4. 生成静态 HTML 页面 (满足“Web 页面”要求)
+HTML_REPORT_FILE="$REPORT_DIR/daily_report_${DATE_STR}.html"
+
+cat > "$HTML_REPORT_FILE" <<EOF
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>GitHub 每日趋势报告</title>
+    <title>日报归档: $DATE_STR</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f6f8fa; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #24292e; border-bottom: 1px solid #e1e4e8; padding-bottom: 10px; }
-        .stat-card { background: #f1f8ff; border-left: 5px solid #0366d6; padding: 15px; margin: 20px 0; }
-        .highlight { font-weight: bold; color: #0366d6; font-size: 1.2em; }
-        img { max-width: 100%; margin-top: 20px; border: 1px solid #e1e4e8; }
-        .download-section { margin-top: 20px; padding: 10px; background: #eef; border-radius: 4px; }
-        footer { margin-top: 30px; color: #586069; font-size: 0.9em; text-align: center; }
-        a { color: #0366d6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        body { font-family: sans-serif; padding: 40px; background: #f0f2f5; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .stat { margin: 20px 0; font-size: 1.1em; }
+        .btn { display: inline-block; background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px; }
+        .btn:hover { background: #218838; }
+        .footer { margin-top: 30px; font-size: 0.8em; color: #666; text-align: center; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>GitHub 开源趋势日报: $DATE_STR</h1>
+    <div class="card">
+        <h1>📅 每日趋势归档 ($DATE_STR)</h1>
         
-        <div class="stat-card">
-            <p>🏆 <strong>今日榜首项目：</strong> <span class="highlight">$TOP_NAME</span></p>
-            <p>⭐ <strong>今日获得 Star：</strong> $TOP_STARS</p>
+        <div class="stat">
+            <p>🏆 <strong>今日榜首:</strong> $TOP_NAME</p>
+            <p>⭐ <strong>获得 Star:</strong> $TOP_STARS</p>
         </div>
 
-        <h3>📊 编程语言热度分布</h3>
-        <img src="$IMG_PATH" alt="Trend Chart">
-        
-        <div class="download-section">
-            <h3>💾 数据存档</h3>
-            <p>您可以下载今日采集的原始 JSON 数据进行分析：</p>
-            <a href="downloads/$RAW_FILE_NAME" download>⬇️ 点击下载今日数据 ($RAW_FILE_NAME)</a>
-            <p><small>查看历史数据请访问 downloads/ 目录</small></p>
+        <div style="background: #e9ecef; padding: 15px; border-radius: 5px;">
+            <p><strong>📂 数据下载：</strong></p>
+            <p>点击下方按钮下载今日采集的原始数据文件。</p>
+            <a href="../../static/downloads/$RAW_FILE_NAME" class="btn" download>⬇️ 下载原始 JSON 数据</a>
         </div>
 
-        <footer>
-            <p>System developed by Linux Course Project | Generated at $(date "+%H:%M:%S")</p>
-        </footer>
+        <div class="footer">
+            <p>Generated by Shell Publisher | <a href="/">返回首页</a></p>
+        </div>
     </div>
 </body>
 </html>
 EOF
 
-echo "[INFO] 网页报告已更新，包含下载链接: $HTML_FILE"
+echo "[SUCCESS] 发布完成！"
+echo "  - 静态报告: static/reports/daily_report_${DATE_STR}.html"
+echo "  - 下载文件: static/downloads/$RAW_FILE_NAME"

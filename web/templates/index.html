@@ -216,10 +216,44 @@
                         <option value="{{ date }}" {% if date==current_date %}selected{% endif %}>📅 {{ date }}</option>
                         {% endfor %}
                     </select>
+
                     <button onclick="refreshData()"
                         class="btn btn-sm btn-light rounded-pill px-3 fw-bold text-primary shadow-sm">
                         <i class="bi bi-arrow-clockwise"></i> 更新
                     </button>
+
+                    <div class="dropdown">
+                        <button
+                            class="btn btn-sm btn-white rounded-pill px-3 fw-bold text-dark shadow-sm dropdown-toggle"
+                            type="button" data-bs-toggle="dropdown" style="background: rgba(255,255,255,0.9);">
+                            <i class="bi bi-archive-fill text-success"></i> 获取归档
+                        </button>
+                        <ul class="dropdown-menu shadow border-0">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2"
+                                    href="/static/reports/daily_report_{{ current_date }}.html" target="_blank">
+                                    <i class="bi bi-file-earmark-richtext text-primary"></i>
+                                    <div>
+                                        <span>查看静态日报</span>
+                                        <div class="small text-muted" style="font-size:0.7em">HTML 格式永久存档</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2"
+                                    href="/static/downloads/github_daily_{{ current_date }}.json" download>
+                                    <i class="bi bi-file-earmark-code text-danger"></i>
+                                    <div>
+                                        <span>下载原始数据</span>
+                                        <div class="small text-muted" style="font-size:0.7em">JSON 格式数据源</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 {% if summary %}
                 <div class="mt-2 small opacity-50">Last updated: {{ summary.update_time }}</div>
