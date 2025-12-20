@@ -1,5 +1,6 @@
 flask
 requests
 beautifulsoup4
-matplotlib
+fake-useragent
 deep-translator
+APScheduler

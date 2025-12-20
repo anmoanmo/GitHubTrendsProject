@@ -9,130 +9,141 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <style>
-        /* --- CSS 变量定义 (支持暗黑模式) --- */
         :root {
-            --bg-body: #f4f6f9;
+            --bg-body: #f8f9fa;
             --bg-card: #ffffff;
-            --text-main: #212529;
-            --text-muted: #6c757d;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --hover-bg: #f8f9fa;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+            --header-bg: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            --accent-color: #764ba2;
+            --rank-bg: #edf2f7;
+            --rank-color: #4a5568;
         }
 
         [data-theme="dark"] {
-            --bg-body: #121212;
-            --bg-card: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --header-bg: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
-            --hover-bg: #2c2c2c;
+            --bg-body: #1a202c;
+            --bg-card: #2d3748;
+            --text-main: #e2e8f0;
+            --text-muted: #a0aec0;
+            --border-color: #4a5568;
+            --header-bg: linear-gradient(120deg, #2c3e50 0%, #000000 100%);
+            --accent-color: #a78bfa;
+            --rank-bg: #4a5568;
+            --rank-color: #cbd5e0;
         }
 
         body {
             background: var(--bg-body);
             color: var(--text-main);
-            transition: background 0.3s, color 0.3s;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: all 0.3s ease;
         }
 
-        .card,
-        .main-card {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border: none;
-        }
-
-        .list-group-item {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border-color: var(--border-color);
-        }
-
-        .modal-content {
-            background: var(--bg-card);
-            color: var(--text-main);
-        }
-
-        /* 头部样式 */
         .header-bg {
             background: var(--header-bg);
+            padding: 3rem 0 5rem;
+            margin-bottom: -3rem;
+            border-radius: 0 0 24px 24px;
             color: white;
-            padding: 40px 0 60px;
-            margin-bottom: -40px;
-            border-radius: 0 0 20px 20px;
-            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .theme-toggle {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.2s;
-        }
-
-        .theme-toggle:hover {
-            color: white;
-        }
-
-        /* 卡片与组件 */
         .main-card {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
-        .nav-pills .nav-link {
-            border-radius: 30px;
-            padding: 8px 25px;
-            margin: 0 5px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: #764ba2;
-            color: white;
-        }
-
-        /* 列表项 */
         .repo-item {
-            border-left: 4px solid transparent;
-            transition: background 0.2s;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 1rem;
+            transition: background 0.2s, transform 0.2s;
         }
 
         .repo-item:hover {
-            background-color: var(--hover-bg);
-            border-left-color: #764ba2;
+            background-color: rgba(118, 75, 162, 0.03);
+            transform: translateX(4px);
+        }
+
+        .repo-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background: var(--rank-bg);
+            color: var(--rank-color);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .repo-item:nth-child(1) .rank-num {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .repo-item:nth-child(2) .rank-num {
+            background: #ffedd5;
+            color: #f97316;
+        }
+
+        .repo-item:nth-child(3) .rank-num {
+            background: #fef3c7;
+            color: #d97706;
         }
 
         .repo-link {
-            color: inherit;
+            color: var(--text-main);
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
 
         .repo-link:hover {
-            color: #0d6efd;
-            text-decoration: underline;
+            color: var(--accent-color);
         }
 
-        /* 徽章 */
-        .stat-badge {
-            font-size: 0.85rem;
-            padding: 5px 10px;
-            border-radius: 8px;
-            display: inline-flex;
+        .badge-new {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #fffbeb;
+            color: #d97706;
+            border: 1px solid #fcd34d;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+
+        [data-theme="dark"] .badge-new {
+            background: #78350f;
+            color: #fcd34d;
+            border-color: #92400e;
+        }
+
+        .stat-group {
+            display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 12px;
+            justify-content: flex-end;
         }
 
-        .stat-badge.total {
-            background: rgba(79, 70, 229, 0.1);
-            color: #4f46e5;
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: 500;
         }
 
         .stat-badge.period {
@@ -140,31 +151,27 @@
             color: #10b981;
         }
 
-        [data-theme="dark"] .stat-badge.total {
-            background: rgba(79, 70, 229, 0.2);
-            color: #818cf8;
+        .stat-badge.total {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
         }
 
-        /* 搜索框 */
-        .search-box {
-            position: relative;
-            width: 200px;
-        }
-
-        .search-box input {
-            padding-left: 35px;
-            border-radius: 20px;
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
+        .stat-badge.total-only {
+            background: var(--rank-bg);
             color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-pills .nav-link {
+            color: var(--text-muted);
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 6px rgba(118, 75, 162, 0.3);
         }
 
         .loading-overlay {
@@ -173,174 +180,162 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 9999;
             display: none;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
 
 <body>
-
     <div class="loading-overlay" id="loadingMask">
-        <div class="spinner-grow text-primary mb-3" style="width: 3rem; height: 3rem;"></div>
+        <div class="spinner-border text-light mb-3" style="width: 3rem; height: 3rem;"></div>
         <h4>正在采集最新数据...</h4>
-        <p class="opacity-75">预计耗时 20-30 秒</p>
+        <p class="opacity-75">智能分析中，可能需要 20-30 秒</p>
     </div>
 
-    <div class="modal fade" id="historyModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-graph-up"></i> 历史趋势: <span
-                            id="modalRepoName"></span></h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        style="filter: invert(1) grayscale(100%) brightness(200%);"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="historyChart" style="width: 100%; height: 300px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <header class="header-bg text-center shadow-sm">
+    <header class="header-bg">
         <div class="container position-relative">
-            <div class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+            <div class="position-absolute top-0 end-0 mt-3 me-3 fs-4" style="cursor:pointer; opacity:0.8"
+                onclick="toggleTheme()">
                 <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
             </div>
+            <div class="text-center">
+                <h1 class="fw-bold mb-2"><i class="bi bi-graph-up-arrow"></i> GitHub Trends Pro</h1>
+                <p class="opacity-75">发现 GitHub 上的明日之星</p>
 
-            <h1 class="fw-bold display-5 mb-2"><i class="bi bi-github"></i> GitHub Trends Pro</h1>
-            <p class="opacity-75 fs-5">v2.0 全维度数据监控系统</p>
-
-            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-                <div class="input-group shadow-sm" style="width: auto;">
-                    <span class="input-group-text bg-white border-0 text-primary"><i
-                            class="bi bi-calendar-event"></i></span>
-                    <select class="form-select border-0" style="min-width: 140px; cursor: pointer;"
-                        onchange="changeDate(this.value)">
+                <div class="d-flex justify-content-center gap-2 mt-4">
+                    <select class="form-select form-select-sm w-auto shadow-none" onchange="changeDate(this.value)"
+                        style="border-radius:20px; padding-left:15px;">
                         {% for date in available_dates %}
-                        <option value="{{ date }}" {% if date==current_date %}selected{% endif %}>{{ date }}</option>
+                        <option value="{{ date }}" {% if date==current_date %}selected{% endif %}>📅 {{ date }}</option>
                         {% endfor %}
                     </select>
+                    <button onclick="refreshData()"
+                        class="btn btn-sm btn-light rounded-pill px-3 fw-bold text-primary shadow-sm">
+                        <i class="bi bi-arrow-clockwise"></i> 更新
+                    </button>
                 </div>
-                <button onclick="refreshData()" class="btn btn-light shadow-sm text-primary fw-bold rounded-pill px-4">
-                    <i class="bi bi-arrow-clockwise"></i> 立即更新
-                </button>
+                {% if summary %}
+                <div class="mt-2 small opacity-50">Last updated: {{ summary.update_time }}</div>
+                {% endif %}
             </div>
-            {% if summary %}
-            <div class="mt-2 small opacity-50">数据更新于: {{ summary.update_time }} (自动调度中)</div>
-            {% endif %}
         </div>
     </header>
 
-    <div class="container" style="margin-top: -30px; position: relative; z-index: 10;">
+    <div class="container" style="margin-top: -2.5rem; position: relative; z-index: 10;">
         {% if summary and summary.data %}
-        <div class="main-card p-4 shadow">
+        <div class="main-card p-3 p-md-4">
+
             <ul class="nav nav-pills mb-4 justify-content-center" id="trendTabs" role="tablist">
                 <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daily"
-                        onclick="renderChart('daily')">🔥 今日热门</button></li>
+                        onclick="renderChart('daily')">今日热门</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#weekly"
-                        onclick="renderChart('weekly')">📅 本周趋势</button></li>
+                        onclick="renderChart('weekly')">本周趋势</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#monthly"
-                        onclick="renderChart('monthly')">🌙 本月精选</button></li>
+                        onclick="renderChart('monthly')">本月精选</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#yearly"
-                        onclick="renderChart('yearly')">🏆 年度榜单</button></li>
+                        onclick="renderChart('yearly')">年度榜单</button></li>
                 <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#all"
-                        onclick="renderChart('all')">👑 历史总榜</button></li>
+                        onclick="renderChart('all')">历史总榜</button></li>
             </ul>
 
             <div class="tab-content">
                 {% for period in ['daily', 'weekly', 'monthly', 'yearly', 'all'] %}
-                {% set info = summary.data[period] %}
+                {% set info = summary.data.get(period) %}
                 <div class="tab-pane fade {% if period == 'daily' %}show active{% endif %}" id="{{ period }}">
                     {% if info %}
                     <div class="row g-4">
-                        <div class="col-lg-4">
-                            <div class="card bg-primary text-white border-0 shadow mb-4"
-                                style="background: var(--header-bg) !important;">
-                                <div class="card-body p-4">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span class="badge bg-warning text-dark">NO.1 Trending</span>
-                                        <i class="bi bi-trophy-fill fs-4 text-warning"></i>
+                        <div class="col-lg-4 order-lg-2">
+                            <div class="card border-0 h-100 bg-transparent">
+                                <div class="card-body px-0">
+                                    <h6 class="fw-bold mb-3 small text-uppercase text-muted ls-1">语言分布</h6>
+                                    <div id="chart-{{ period }}" style="height: 300px; width:100%;"></div>
+
+                                    {% if info.top_repo %}
+                                    <div class="alert mt-3 border-0 shadow-sm"
+                                        style="background: rgba(118, 75, 162, 0.1); color: var(--accent-color);">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="badge bg-warning text-dark">NO.1</span>
+                                            <small class="fw-bold">榜首推荐</small>
+                                        </div>
+                                        <div class="fw-bold text-truncate">{{ info.top_repo.name }}</div>
+                                        <div class="small opacity-75 mt-1">{{ (info.top_repo.desc or '')[:60] }}...
+                                        </div>
                                     </div>
-                                    <h4 class="fw-bold text-break"><a href="{{ info.top_repo.url }}" target="_blank"
-                                            class="text-white text-decoration-none">{{ info.top_repo.name }}</a></h4>
-                                    <p class="small opacity-75 text-truncate">{{ info.top_repo.desc }}</p>
-                                    <div class="d-flex justify-content-between small opacity-75">
-                                        <span><i class="bi bi-code-slash"></i> {{ info.top_repo.language }}</span>
-                                        <span><i class="bi bi-star-fill"></i> {{ info.top_repo.stars_total }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm h-100">
-                                <div class="card-body">
-                                    <h6 class="fw-bold mb-3 text-muted">语言分布</h6>
-                                    <div id="chart-{{ period }}" style="height: 250px;"></div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-8">
-                            <div class="card shadow-sm border-0 h-100">
-                                <div
-                                    class="card-header bg-transparent border-0 py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
-                                    <h5 class="mb-0 fw-bold"><i class="bi bi-list-ol text-primary"></i> Top 15</h5>
-                                    <div class="search-box">
-                                        <i class="bi bi-search"></i>
-                                        <input type="text" class="form-control form-control-sm" placeholder="搜索..."
-                                            onkeyup="filterRepos(this.value, '{{ period }}')">
-                                    </div>
-                                </div>
-                                <div class="list-group list-group-flush" id="list-{{ period }}">
-                                    {% for repo in info.repos %}
-                                    <div class="list-group-item repo-item py-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-1 text-center text-muted fw-bold">{{ loop.index }}</div>
-                                            <div class="col-md-7 col-10">
-                                                <h6 class="mb-1 fw-bold repo-name">
-                                                    <a href="{{ repo.url }}" target="_blank" class="repo-link">{{
-                                                        repo.name }}</a>
-                                                </h6>
-                                                <small class="text-muted d-block text-truncate repo-desc">{{ repo.desc
-                                                    }}</small>
-                                                <div class="mt-1">
-                                                    <span
-                                                        class="badge bg-secondary bg-opacity-10 text-secondary border repo-lang">{{
-                                                        repo.language }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-12 mt-2 mt-md-0 text-md-end">
-                                                <div class="d-flex align-items-center justify-content-md-end gap-2">
-                                                    {% if repo.stars_period > 0 %}
-                                                    <span class="stat-badge period"><i class="bi bi-arrow-up"></i> {{
-                                                        repo.stars_period }}</span>
-                                                    {% endif %}
-                                                    <span class="stat-badge total"><i class="bi bi-star-fill"></i> {{
-                                                        repo.stars_total }}</span>
-                                                    <button class="btn btn-sm btn-link text-muted p-0 ms-2"
-                                                        onclick="showHistory('{{ repo.name }}')" title="查看历史趋势">
-                                                        <i class="bi bi-graph-up"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                        <div class="col-lg-8 order-lg-1">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="fw-bold mb-0">Top Projects</h5>
+                                <input type="text" class="form-control form-control-sm w-auto rounded-pill"
+                                    placeholder="🔍 搜索项目..." onkeyup="filterRepos(this.value, '{{ period }}')">
+                            </div>
+
+                            <div class="list-group list-group-flush rounded-3" id="list-{{ period }}">
+                                {% for repo in info.repos %}
+                                <div class="repo-item d-flex flex-wrap align-items-center gap-3">
+                                    <div class="rank-num">{{ loop.index }}</div>
+
+                                    <div class="flex-grow-1" style="min-width: 200px;">
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <a href="{{ repo.url }}" target="_blank" class="repo-link text-break">{{
+                                                repo.name }}</a>
+                                            {% if repo.is_new %}
+                                            <span class="badge-new" data-bs-toggle="tooltip" title="最近30天内创建的新项目">✨
+                                                New</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="small text-muted mt-1 text-truncate-2">{{ repo.desc }}</div>
+                                        <div class="mt-2 d-flex gap-2">
+                                            <span
+                                                class="badge bg-secondary bg-opacity-10 text-secondary border fw-normal"
+                                                style="font-size:0.75rem;">{{ repo.language }}</span>
                                         </div>
                                     </div>
-                                    {% endfor %}
-                                    <div class="no-result text-center py-4 text-muted small" style="display:none;">
-                                        未找到相关项目</div>
+
+                                    <div class="stat-group ms-auto">
+                                        {% if repo.stars_period > 0 %}
+                                        <div class="stat-badge period" data-bs-toggle="tooltip" title="本期新增 Star">
+                                            <i class="bi bi-graph-up-arrow"></i> {{ repo.stars_period }}
+                                        </div>
+                                        {% endif %}
+
+                                        {% if repo.stars_period > 0 %}
+                                        <div class="stat-badge total" data-bs-toggle="tooltip" title="历史累计 Star">
+                                            <i class="bi bi-star-fill"></i> {{ repo.stars_total }}
+                                        </div>
+                                        {% else %}
+                                        <div class="stat-badge total-only" data-bs-toggle="tooltip"
+                                            title="累计 Star (暂无增量数据)">
+                                            <i class="bi bi-star"></i> {{ repo.stars_total }}
+                                        </div>
+                                        {% endif %}
+
+                                        <button class="btn btn-icon btn-sm text-muted p-1"
+                                            onclick="showHistory('{{ repo.name }}')" title="查看历史曲线">
+                                            <i class="bi bi-clock-history"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="no-result text-center py-4 text-muted small" style="display:none;">未找到匹配项目
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% else %}
-                    <div class="text-center py-5">
-                        <h4 class="text-muted">暂无数据</h4>
-                        <p>请点击“立即更新”或切换其他日期</p>
+                    <div class="text-center py-5 opacity-50">
+                        <i class="bi bi-inbox fs-1"></i>
+                        <p class="mt-2">暂无数据，请尝试更新</p>
                     </div>
                     {% endif %}
                 </div>
@@ -350,7 +345,7 @@
         {% else %}
         <div class="main-card p-5 text-center">
             <h3>👋 欢迎使用</h3>
-            <p class="text-muted">当前日期暂无数据，系统已自动调度，或点击上方“立即更新”手动开始。</p>
+            <p class="text-muted">数据库正在初始化，请点击上方“更新”按钮开始采集。</p>
         </div>
         {% endif %}
 
@@ -359,9 +354,25 @@
         </footer>
     </div>
 
+    <div class="modal fade" id="historyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="modalRepoName">Repo Name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="historyChart" style="width: 100%; height: 350px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // --- 1. 图表数据注入 ---
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
         const chartDataMap = {};
         {% if summary and summary.data %}
         {% for period, info in summary.data.items() %}
@@ -369,7 +380,6 @@
         {% endfor %}
         {% endif %}
 
-        // --- 2. 渲染饼图 ---
         function renderChart(period) {
             const chartDom = document.getElementById('chart-' + period);
             if (!chartDom || !chartDataMap[period]) return;
@@ -380,108 +390,98 @@
 
             myChart.setOption({
                 tooltip: { trigger: 'item' },
-                color: ['#764ba2', '#667eea', '#00cdac', '#ff9a9e', '#fbc2eb'],
                 series: [{
                     type: 'pie',
-                    radius: ['40%', '70%'],
-                    itemStyle: { borderRadius: 8, borderColor: isDark ? '#1e1e1e' : '#fff', borderWidth: 2 },
-                    label: { show: false, position: 'center' },
-                    emphasis: { label: { show: true, fontSize: 14, fontWeight: 'bold', color: isDark ? '#fff' : '#333' } },
+                    radius: ['45%', '70%'],
+                    center: ['50%', '50%'],
+                    itemStyle: {
+                        borderRadius: 6,
+                        borderColor: isDark ? '#2d3748' : '#fff',
+                        borderWidth: 2
+                    },
+                    label: { show: false },
                     data: chartDataMap[period]
                 }]
             });
         }
 
-        // --- 3. 历史趋势弹窗 ---
         const historyModal = new bootstrap.Modal(document.getElementById('historyModal'));
-        let historyChart = null;
+        let historyChartInstance = null;
 
         function showHistory(repoName) {
             document.getElementById('modalRepoName').innerText = repoName;
             historyModal.show();
 
-            // 清理旧图表
-            if (historyChart) { historyChart.dispose(); }
-            const chartContainer = document.getElementById('historyChart');
-            chartContainer.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary"></div></div>';
+            const chartBox = document.getElementById('historyChart');
+            if (historyChartInstance) historyChartInstance.dispose();
+            chartBox.innerHTML = '<div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border text-primary"></div></div>';
 
-            // 请求数据
             fetch(`/repo_history?name=${encodeURIComponent(repoName)}`)
-                .then(res => res.json())
+                .then(r => r.json())
                 .then(data => {
-                    chartContainer.innerHTML = ''; // 清除 loading
-                    if (data.length === 0) {
-                        chartContainer.innerHTML = '<p class="text-center text-muted mt-5">暂无历史数据</p>';
+                    chartBox.innerHTML = '';
+                    if (!data.length) {
+                        chartBox.innerHTML = '<p class="text-center text-muted mt-5">暂无历史记录</p>';
                         return;
                     }
-
-                    // 渲染图表
-                    historyChart = echarts.init(chartContainer);
-                    const dates = data.map(i => i.date);
-                    const stars = data.map(i => i.stars);
+                    historyChartInstance = echarts.init(chartBox);
                     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                    const textColor = isDark ? '#ccc' : '#333';
-
-                    historyChart.setOption({
-                        grid: { top: 30, bottom: 30, left: 50, right: 20 },
+                    historyChartInstance.setOption({
+                        grid: { top: 30, right: 20, bottom: 20, left: 50, containLabel: true },
                         tooltip: { trigger: 'axis' },
-                        xAxis: { type: 'category', data: dates, axisLabel: { color: textColor } },
-                        yAxis: { type: 'value', axisLabel: { color: textColor }, splitLine: { lineStyle: { color: isDark ? '#333' : '#eee' } } },
+                        xAxis: { type: 'category', data: data.map(i => i.date) },
+                        yAxis: { type: 'value', splitLine: { lineStyle: { color: isDark ? '#4a5568' : '#eee' } } },
                         series: [{
-                            data: stars, type: 'line', smooth: true,
+                            data: data.map(i => i.stars),
+                            type: 'line', smooth: true,
                             itemStyle: { color: '#764ba2' },
-                            areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#764ba2' }, { offset: 1, color: 'rgba(118,75,162,0)' }]) }
+                            areaStyle: { opacity: 0.2, color: '#764ba2' }
                         }]
                     });
                 });
         }
 
-        // --- 4. 搜索过滤 ---
-        function filterRepos(keyword, period) {
-            keyword = keyword.toLowerCase();
-            const container = document.getElementById(`list-${period}`);
-            const items = container.getElementsByClassName('repo-item');
-            let hasResult = false;
-
-            for (let item of items) {
-                const text = item.innerText.toLowerCase();
-                if (text.includes(keyword)) {
-                    item.style.display = ""; hasResult = true;
-                } else { item.style.display = "none"; }
-            }
-            container.querySelector('.no-result').style.display = hasResult ? "none" : "block";
+        function filterRepos(key, period) {
+            key = key.toLowerCase();
+            const list = document.getElementById(`list-${period}`);
+            const items = list.querySelectorAll('.repo-item');
+            let found = false;
+            items.forEach(el => {
+                const txt = el.innerText.toLowerCase();
+                if (txt.includes(key)) { el.style.display = 'flex'; found = true; }
+                else { el.style.display = 'none'; }
+            });
+            list.querySelector('.no-result').style.display = found ? 'none' : 'block';
         }
 
-        // --- 5. 主题切换 ---
         function toggleTheme() {
             const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const target = current === 'dark' ? 'light' : 'dark';
+            const cur = html.getAttribute('data-theme');
+            const target = cur === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', target);
             document.getElementById('themeIcon').className = target === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
             localStorage.setItem('theme', target);
-
-            // 重新渲染可见的图表以适应主题颜色
-            const activePane = document.querySelector('.tab-pane.active');
-            if (activePane) renderChart(activePane.id);
+            const activeTab = document.querySelector('.tab-pane.show.active');
+            if (activeTab) {
+                const chartInst = echarts.getInstanceByDom(document.getElementById('chart-' + activeTab.id));
+                if (chartInst) { chartInst.dispose(); renderChart(activeTab.id); }
+            }
         }
 
-        // 初始化
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.getElementById('themeIcon').className = savedTheme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
-        renderChart('daily');
-
-        // 通用功能
         function changeDate(d) { window.location.href = `/?date=${d}`; }
         function refreshData() {
-            if (!confirm("确定立即更新数据？")) return;
+            if (!confirm('确定立即更新数据？')) return;
             document.getElementById('loadingMask').style.display = 'flex';
-            fetch('/run_task', { method: 'POST' }).then(r => r.json()).then(d => {
-                if (d.status === 'success') location.reload();
-                else { alert(d.message); document.getElementById('loadingMask').style.display = 'none'; }
+            fetch('/run_task', { method: 'POST' }).then(r => r.json()).then(res => {
+                if (res.status === 'success') location.reload();
+                else { alert(res.message); document.getElementById('loadingMask').style.display = 'none'; }
             });
         }
+
+        const saved = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', saved);
+        document.getElementById('themeIcon').className = saved === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+        renderChart('daily');
     </script>
 </body>
 
