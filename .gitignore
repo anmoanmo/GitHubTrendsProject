@@ -3,6 +3,12 @@ __pycache__/
 .DS_Store
 logs/*.log
 
+# 忽略数据目录内容
 data/*
 !data/.gitkeep
+
+# 忽略 Web 生成的静态报告和下载文件
+web/static/reports/*
+web/static/downloads/*
+
 # 注意：如果你想保留 logs 文件夹结构但忽略内容，可以创建一个空的 .gitkeep 文件在 logs 目录下
