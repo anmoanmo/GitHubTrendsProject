@@ -2,136 +2,136 @@
     {
         "name": "facebookresearch/sam3",
         "language": "Python",
-        "stars_total": 6165,
-        "stars_period": 6071,
+        "stars_total": 6194,
+        "stars_period": 6160,
         "url": "https://github.com/facebookresearch/sam3",
         "desc": "The repository provides code for running inference and finetuning with the Meta Segment Anything Model 3 (SAM 3), links for downloading the trained model checkpoints, and example notebooks that show how to use the model."
     },
     {
         "name": "sansan0/TrendRadar",
         "language": "Python",
-        "stars_total": 39687,
-        "stars_period": 21405,
+        "stars_total": 39723,
+        "stars_period": 20015,
         "url": "https://github.com/sansan0/TrendRadar",
         "desc": "🎯 告别信息过载，AI 助你看懂新闻资讯热点，简单的舆情监控分析 - 多平台热点聚合+基于 MCP 的AI分析工具。监控35个平台（抖音、知乎、B站、华尔街见闻、财联社等），智能筛选+自动推送+AI对话分析（用自然语言深度挖掘新闻：趋势追踪、情感分析、相似检索等13种工具）。支持企业微信/个人微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 推送，1分钟手机通知，无需编程。支持Docker部署，支持数据远程云存储⭐ 让算法为你服务，用AI理解热点"
     },
     {
         "name": "kavishdevar/librepods",
         "language": "Kotlin",
-        "stars_total": 22972,
-        "stars_period": 16019,
+        "stars_total": 23018,
+        "stars_period": 13726,
         "url": "https://github.com/kavishdevar/librepods",
         "desc": "AirPods liberated from Apple's ecosystem."
     },
     {
         "name": "rustfs/rustfs",
         "language": "Rust",
-        "stars_total": 17661,
-        "stars_period": 6255,
+        "stars_total": 17704,
+        "stars_period": 6320,
         "url": "https://github.com/rustfs/rustfs",
         "desc": "🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph."
     },
     {
         "name": "microsoft/magentic-ui",
         "language": "Python",
-        "stars_total": 9206,
-        "stars_period": 1271,
+        "stars_total": 9227,
+        "stars_period": 1294,
         "url": "https://github.com/microsoft/magentic-ui",
         "desc": "A research prototype of a human-centered web agent"
     },
     {
         "name": "datawhalechina/hello-agents",
         "language": "Python",
-        "stars_total": 11019,
-        "stars_period": 6423,
+        "stars_total": 11095,
+        "stars_period": 6764,
         "url": "https://github.com/datawhalechina/hello-agents",
         "desc": "📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程"
     },
     {
         "name": "anthropics/claude-quickstarts",
         "language": "Python",
-        "stars_total": 12537,
-        "stars_period": 2267,
+        "stars_total": 12572,
+        "stars_period": 2305,
         "url": "https://github.com/anthropics/claude-quickstarts",
         "desc": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API"
     },
     {
         "name": "facebookresearch/sam-3d-body",
         "language": "Python",
-        "stars_total": 2264,
-        "stars_period": 2263,
+        "stars_total": 2284,
+        "stars_period": 2264,
         "url": "https://github.com/facebookresearch/sam-3d-body",
         "desc": "The repository provides code for running inference with the SAM 3D Body Model (3DB), links for downloading the trained model checkpoints and datasets, and example notebooks that show how to use the model."
     },
     {
         "name": "agentsmd/agents.md",
         "language": "TypeScript",
-        "stars_total": 12600,
-        "stars_period": 4165,
+        "stars_total": 12657,
+        "stars_period": 4273,
         "url": "https://github.com/agentsmd/agents.md",
         "desc": "AGENTS.md — a simple, open format for guiding coding agents"
     },
     {
         "name": "ostris/ai-toolkit",
         "language": "Python",
-        "stars_total": 8337,
-        "stars_period": 1448,
+        "stars_total": 8353,
+        "stars_period": 1463,
         "url": "https://github.com/ostris/ai-toolkit",
         "desc": "The ultimate training toolkit for finetuning diffusion models"
     },
     {
         "name": "sst/opencode",
         "language": "TypeScript",
-        "stars_total": 40351,
-        "stars_period": 7115,
+        "stars_total": 40485,
+        "stars_period": 7254,
         "url": "https://github.com/sst/opencode",
         "desc": "The open source coding agent."
     },
     {
         "name": "oven-sh/bun",
         "language": "Zig",
-        "stars_total": 85300,
-        "stars_period": 3213,
+        "stars_total": 85317,
+        "stars_period": 3247,
         "url": "https://github.com/oven-sh/bun",
         "desc": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one"
     },
     {
         "name": "MemoriLabs/Memori",
         "language": "Python",
-        "stars_total": 11151,
-        "stars_period": 6289,
+        "stars_total": 11182,
+        "stars_period": 6018,
         "url": "https://github.com/MemoriLabs/Memori",
         "desc": "SQL Native Memory Layer for LLMs, AI Agents & Multi-Agent Systems"
     },
     {
         "name": "GoogleCloudPlatform/agent-starter-pack",
         "language": "Python",
-        "stars_total": 4910,
-        "stars_period": 1886,
+        "stars_total": 4946,
+        "stars_period": 1947,
         "url": "https://github.com/GoogleCloudPlatform/agent-starter-pack",
         "desc": "Ship AI Agents to Google Cloud in minutes, not months. Production-ready templates with built-in CI/CD, evaluation, and observability."
     },
     {
         "name": "comfyanonymous/ComfyUI",
         "language": "Python",
-        "stars_total": 97403,
-        "stars_period": 3594,
+        "stars_total": 97451,
+        "stars_period": 3622,
         "url": "https://github.com/comfyanonymous/ComfyUI",
         "desc": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface."
     },
     {
         "name": "Morganamilo/paru",
         "language": "Rust",
-        "stars_total": 8020,
-        "stars_period": 443,
+        "stars_total": 8029,
+        "stars_period": 446,
         "url": "https://github.com/Morganamilo/paru",
         "desc": "Feature packed AUR helper"
     },
     {
         "name": "simstudioai/sim",
         "language": "TypeScript",
-        "stars_total": 23671,
-        "stars_period": 5310,
+        "stars_total": 23713,
+        "stars_period": 5366,
         "url": "https://github.com/simstudioai/sim",
         "desc": "Open-source platform to build and deploy AI agent workflows."
     }

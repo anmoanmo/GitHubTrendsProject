@@ -1,32 +1,64 @@
 [
     {
+        "name": "x1xhlol/system-prompts-and-models-of-ai-tools",
+        "language": "Other",
+        "stars_total": 101219,
+        "stars_period": 0,
+        "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+        "desc": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models"
+    },
+    {
         "name": "deepseek-ai/DeepSeek-V3",
         "language": "Python",
-        "stars_total": 100791,
+        "stars_total": 100794,
         "stars_period": 0,
         "url": "https://github.com/deepseek-ai/DeepSeek-V3",
         "desc": null
     },
     {
+        "name": "google-gemini/gemini-cli",
+        "language": "TypeScript",
+        "stars_total": 88028,
+        "stars_period": 0,
+        "url": "https://github.com/google-gemini/gemini-cli",
+        "desc": "An open-source AI agent that brings the power of Gemini directly into your terminal."
+    },
+    {
         "name": "github/spec-kit",
         "language": "Python",
-        "stars_total": 56544,
+        "stars_total": 56633,
         "stars_period": 0,
         "url": "https://github.com/github/spec-kit",
         "desc": "💫 Toolkit to help you get started with Spec-Driven Development"
     },
     {
-        "name": "anthropics/claude-code",
-        "language": "Shell",
-        "stars_total": 47009,
+        "name": "openai/codex",
+        "language": "Rust",
+        "stars_total": 54330,
         "stars_period": 0,
-        "url": "https://github.com/anthropics/claude-code",
-        "desc": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands."
+        "url": "https://github.com/openai/codex",
+        "desc": "Lightweight coding agent that runs in your terminal"
+    },
+    {
+        "name": "FoundationAgents/OpenManus",
+        "language": "Python",
+        "stars_total": 51378,
+        "stars_period": 0,
+        "url": "https://github.com/FoundationAgents/OpenManus",
+        "desc": "No fortress, purely open ground.  OpenManus is Coming."
+    },
+    {
+        "name": "Zie619/n8n-workflows",
+        "language": "Python",
+        "stars_total": 48113,
+        "stars_period": 0,
+        "url": "https://github.com/Zie619/n8n-workflows",
+        "desc": "all of the workflows of n8n i could find (also from the site itself)"
     },
     {
         "name": "yeongpin/cursor-free-vip",
         "language": "Python",
-        "stars_total": 46144,
+        "stars_total": 46165,
         "stars_period": 0,
         "url": "https://github.com/yeongpin/cursor-free-vip",
         "desc": "[Support 0.49.x]（Reset Cursor AI MachineID & Bypass Higher Token Limit） Cursor Ai ，自动重置机器ID ， 免费升级使用Pro功能: You've reached your trial request limit. / Too many free trial accounts used on this machine. Please upgrade to pro. We have this limit in place to prevent abuse. Please let us know if you believe this is a mistake."
@@ -34,7 +66,7 @@
     {
         "name": "OpenCut-app/OpenCut",
         "language": "TypeScript",
-        "stars_total": 44470,
+        "stars_total": 44478,
         "stars_period": 0,
         "url": "https://github.com/OpenCut-app/OpenCut",
         "desc": "The open-source CapCut alternative"
@@ -42,7 +74,7 @@
     {
         "name": "sst/opencode",
         "language": "TypeScript",
-        "stars_total": 40351,
+        "stars_total": 40485,
         "stars_period": 0,
         "url": "https://github.com/sst/opencode",
         "desc": "The open source coding agent."
@@ -50,18 +82,18 @@
     {
         "name": "upstash/context7",
         "language": "TypeScript",
-        "stars_total": 39623,
+        "stars_total": 39653,
         "stars_period": 0,
         "url": "https://github.com/upstash/context7",
         "desc": "Context7 MCP Server -- Up-to-date code documentation for LLMs and AI code editors"
     },
     {
-        "name": "TauricResearch/TradingAgents",
+        "name": "karpathy/nanochat",
         "language": "Python",
-        "stars_total": 26761,
+        "stars_total": 38908,
         "stars_period": 0,
-        "url": "https://github.com/TauricResearch/TradingAgents",
-        "desc": "TradingAgents: Multi-Agents LLM Financial Trading Framework"
+        "url": "https://github.com/karpathy/nanochat",
+        "desc": "The best ChatGPT that $100 can buy."
     },
     {
         "name": "zama-ai/fhevm",
@@ -74,31 +106,15 @@
     {
         "name": "huggingface/open-r1",
         "language": "Python",
-        "stars_total": 25739,
+        "stars_total": 25740,
         "stars_period": 0,
         "url": "https://github.com/huggingface/open-r1",
         "desc": "Fully open reproduction of DeepSeek-R1"
     },
     {
-        "name": "bmad-code-org/BMAD-METHOD",
-        "language": "JavaScript",
-        "stars_total": 25607,
-        "stars_period": 0,
-        "url": "https://github.com/bmad-code-org/BMAD-METHOD",
-        "desc": "Breakthrough Method for Agile Ai Driven Development"
-    },
-    {
-        "name": "github/github-mcp-server",
-        "language": "Go",
-        "stars_total": 25286,
-        "stars_period": 0,
-        "url": "https://github.com/github/github-mcp-server",
-        "desc": "GitHub's official MCP Server"
-    },
-    {
         "name": "microsoft/playwright-mcp",
         "language": "TypeScript",
-        "stars_total": 24534,
+        "stars_total": 24546,
         "stars_period": 0,
         "url": "https://github.com/microsoft/playwright-mcp",
         "desc": "Playwright MCP server"
@@ -112,33 +128,25 @@
         "desc": "An AI-powered task-management system you can drop into Cursor, Lovable, Windsurf, Roo, and others."
     },
     {
-        "name": "huggingface/agents-course",
-        "language": "MDX",
-        "stars_total": 24280,
-        "stars_period": 0,
-        "url": "https://github.com/huggingface/agents-course",
-        "desc": "This repository contains the Hugging Face Agents Course. "
-    },
-    {
         "name": "Fosowl/agenticSeek",
         "language": "Python",
-        "stars_total": 24111,
+        "stars_total": 24114,
         "stars_period": 0,
         "url": "https://github.com/Fosowl/agenticSeek",
         "desc": "Fully Local Manus AI. No APIs, No $200 monthly bills. Enjoy an autonomous agent that thinks, browses the web, and code for the sole cost of electricity. 🔔 Official updates only via twitter @Martin993886460 (Beware of fake account)"
     },
     {
-        "name": "simstudioai/sim",
+        "name": "musistudio/claude-code-router",
         "language": "TypeScript",
-        "stars_total": 23671,
+        "stars_total": 23714,
         "stars_period": 0,
-        "url": "https://github.com/simstudioai/sim",
-        "desc": "Open-source platform to build and deploy AI agent workflows."
+        "url": "https://github.com/musistudio/claude-code-router",
+        "desc": "Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic."
     },
     {
         "name": "permissionlesstech/bitchat",
         "language": "Swift",
-        "stars_total": 23585,
+        "stars_total": 23587,
         "stars_period": 0,
         "url": "https://github.com/permissionlesstech/bitchat",
         "desc": "bluetooth mesh chat, IRC vibes"
@@ -146,17 +154,9 @@
     {
         "name": "wshobson/agents",
         "language": "Python",
-        "stars_total": 23080,
+        "stars_total": 23105,
         "stars_period": 0,
         "url": "https://github.com/wshobson/agents",
         "desc": "Intelligent automation and multi-agent orchestration for Claude Code"
-    },
-    {
-        "name": "firecrawl/open-lovable",
-        "language": "TypeScript",
-        "stars_total": 22918,
-        "stars_period": 0,
-        "url": "https://github.com/firecrawl/open-lovable",
-        "desc": "🔥 Clone and recreate any website as a modern React app in seconds"
     }
 ]

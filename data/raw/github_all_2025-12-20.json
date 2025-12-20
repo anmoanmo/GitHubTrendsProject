@@ -2,7 +2,7 @@
     {
         "name": "codecrafters-io/build-your-own-x",
         "language": "Markdown",
-        "stars_total": 450102,
+        "stars_total": 450211,
         "stars_period": 0,
         "url": "https://github.com/codecrafters-io/build-your-own-x",
         "desc": "Master programming by recreating your favorite technologies from scratch."
@@ -10,7 +10,7 @@
     {
         "name": "freeCodeCamp/freeCodeCamp",
         "language": "TypeScript",
-        "stars_total": 434981,
+        "stars_total": 434992,
         "stars_period": 0,
         "url": "https://github.com/freeCodeCamp/freeCodeCamp",
         "desc": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free."
@@ -18,7 +18,7 @@
     {
         "name": "sindresorhus/awesome",
         "language": "Other",
-        "stars_total": 423502,
+        "stars_total": 423611,
         "stars_period": 0,
         "url": "https://github.com/sindresorhus/awesome",
         "desc": "😎 Awesome lists about all kinds of interesting topics"
@@ -26,7 +26,7 @@
     {
         "name": "public-apis/public-apis",
         "language": "Python",
-        "stars_total": 386682,
+        "stars_total": 386775,
         "stars_period": 0,
         "url": "https://github.com/public-apis/public-apis",
         "desc": "A collective list of free APIs"
@@ -34,7 +34,7 @@
     {
         "name": "EbookFoundation/free-programming-books",
         "language": "Python",
-        "stars_total": 379033,
+        "stars_total": 379046,
         "stars_period": 0,
         "url": "https://github.com/EbookFoundation/free-programming-books",
         "desc": ":books: Freely available programming books"
@@ -42,7 +42,7 @@
     {
         "name": "kamranahmedse/developer-roadmap",
         "language": "TypeScript",
-        "stars_total": 345709,
+        "stars_total": 345742,
         "stars_period": 0,
         "url": "https://github.com/kamranahmedse/developer-roadmap",
         "desc": "Interactive roadmaps, guides and other educational content to help developers grow in their careers."
@@ -50,7 +50,7 @@
     {
         "name": "jwasham/coding-interview-university",
         "language": "Other",
-        "stars_total": 334915,
+        "stars_total": 334931,
         "stars_period": 0,
         "url": "https://github.com/jwasham/coding-interview-university",
         "desc": "A complete computer science study plan to become a software engineer."
@@ -58,7 +58,7 @@
     {
         "name": "donnemartin/system-design-primer",
         "language": "Python",
-        "stars_total": 329709,
+        "stars_total": 329737,
         "stars_period": 0,
         "url": "https://github.com/donnemartin/system-design-primer",
         "desc": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards."
@@ -66,7 +66,7 @@
     {
         "name": "996icu/996.ICU",
         "language": "Other",
-        "stars_total": 275047,
+        "stars_total": 275045,
         "stars_period": 0,
         "url": "https://github.com/996icu/996.ICU",
         "desc": "Repo for counting stars and contributing. Press F to pay respect to glorious developers."
@@ -74,7 +74,7 @@
     {
         "name": "vinta/awesome-python",
         "language": "Python",
-        "stars_total": 274454,
+        "stars_total": 274524,
         "stars_period": 0,
         "url": "https://github.com/vinta/awesome-python",
         "desc": "An opinionated list of awesome Python frameworks, libraries, software and resources."
@@ -82,7 +82,7 @@
     {
         "name": "awesome-selfhosted/awesome-selfhosted",
         "language": "Other",
-        "stars_total": 263728,
+        "stars_total": 263810,
         "stars_period": 0,
         "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
         "desc": "A list of Free Software network services and web applications which can be hosted on your own servers"
@@ -90,7 +90,7 @@
     {
         "name": "practical-tutorials/project-based-learning",
         "language": "Other",
-        "stars_total": 252958,
+        "stars_total": 252996,
         "stars_period": 0,
         "url": "https://github.com/practical-tutorials/project-based-learning",
         "desc": "Curated list of project-based tutorials"
@@ -98,7 +98,7 @@
     {
         "name": "facebook/react",
         "language": "JavaScript",
-        "stars_total": 241730,
+        "stars_total": 241737,
         "stars_period": 0,
         "url": "https://github.com/facebook/react",
         "desc": "The library for web and native user interfaces."
@@ -106,7 +106,7 @@
     {
         "name": "TheAlgorithms/Python",
         "language": "Python",
-        "stars_total": 214907,
+        "stars_total": 214928,
         "stars_period": 0,
         "url": "https://github.com/TheAlgorithms/Python",
         "desc": "All Algorithms implemented in Python"
@@ -114,7 +114,7 @@
     {
         "name": "torvalds/linux",
         "language": "C",
-        "stars_total": 211183,
+        "stars_total": 211226,
         "stars_period": 0,
         "url": "https://github.com/torvalds/linux",
         "desc": "Linux kernel source tree"
@@ -122,7 +122,7 @@
     {
         "name": "vuejs/vue",
         "language": "TypeScript",
-        "stars_total": 209760,
+        "stars_total": 209762,
         "stars_period": 0,
         "url": "https://github.com/vuejs/vue",
         "desc": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core"
@@ -130,7 +130,7 @@
     {
         "name": "ossu/computer-science",
         "language": "HTML",
-        "stars_total": 199244,
+        "stars_total": 199260,
         "stars_period": 0,
         "url": "https://github.com/ossu/computer-science",
         "desc": "🎓 Path to a free self-taught education in Computer Science!"
@@ -138,7 +138,7 @@
     {
         "name": "trimstray/the-book-of-secret-knowledge",
         "language": "Other",
-        "stars_total": 198536,
+        "stars_total": 198650,
         "stars_period": 0,
         "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
         "desc": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more."
@@ -146,7 +146,7 @@
     {
         "name": "trekhleb/javascript-algorithms",
         "language": "JavaScript",
-        "stars_total": 195144,
+        "stars_total": 195149,
         "stars_period": 0,
         "url": "https://github.com/trekhleb/javascript-algorithms",
         "desc": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings"
@@ -154,7 +154,7 @@
     {
         "name": "tensorflow/tensorflow",
         "language": "C++",
-        "stars_total": 192864,
+        "stars_total": 192869,
         "stars_period": 0,
         "url": "https://github.com/tensorflow/tensorflow",
         "desc": "An Open Source Machine Learning Framework for Everyone"

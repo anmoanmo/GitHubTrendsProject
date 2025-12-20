@@ -7,57 +7,95 @@
     <title>GitHub 全网热度监控</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
         body {
-            background: #f8f9fa;
-            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         .header-bg {
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            background: var(--primary-gradient);
             color: white;
-            padding: 40px 0;
-            margin-bottom: 30px;
+            padding: 60px 0 40px;
+            margin-bottom: -30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .main-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: white;
+            overflow: hidden;
         }
 
         .nav-pills .nav-link {
-            border-radius: 50px;
-            padding: 10px 25px;
-            margin-right: 10px;
-            color: #555;
-            background: white;
-            border: 1px solid #ddd;
+            border-radius: 30px;
+            padding: 8px 25px;
+            margin: 0 5px;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
         .nav-pills .nav-link.active {
-            background-color: #2a5298;
+            background-color: #764ba2;
             color: white;
-            border-color: #2a5298;
-        }
-
-        /* 链接去下划线样式 */
-        a.repo-link {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.2s;
-        }
-
-        a.repo-link:hover {
-            color: #0d6efd;
-            text-decoration: underline;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
         }
 
         .repo-item {
-            transition: all 0.2s;
             border-left: 4px solid transparent;
+            transition: background 0.2s;
         }
 
         .repo-item:hover {
-            background-color: #f1f3f5;
-            border-left-color: #2a5298;
+            background-color: #f8f9fa;
+            border-left-color: #764ba2;
         }
 
-        .loading-mask {
+        .stat-badge {
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-badge.total {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .stat-badge.period {
+            background: #ecfdf5;
+            color: #10b981;
+        }
+
+        .top-one-card {
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .top-one-card a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #chart-container {
+            width: 100%;
+            height: 300px;
+        }
+
+        .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -75,131 +113,206 @@
 
 <body>
 
-    <div class="loading-mask" id="loadingMask">
-        <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;"></div>
-        <h3 class="mt-3">正在全网扫描数据...</h3>
-        <p class="text-muted">正在修正 Unknown 数据并抓取链接，请稍候...</p>
+    <div class="loading-overlay" id="loadingMask">
+        <div class="spinner-grow text-primary mb-3" style="width: 3rem; height: 3rem;"></div>
+        <h4 class="fw-light">正在通过全球节点扫描 GitHub...</h4>
+        <p class="text-muted small">这可能需要 20-30 秒，请耐心等待</p>
     </div>
 
-    <div class="header-bg text-center shadow">
+    <header class="header-bg text-center shadow-sm">
         <div class="container">
-            <h1 class="fw-bold"><i class="bi bi-github"></i> GitHub Trends Hub</h1>
-            <p class="opacity-75">全维度开源项目热度分析系统</p>
+            <h1 class="fw-bold display-5 mb-2"><i class="bi bi-github"></i> GitHub Pulse</h1>
+            <p class="opacity-75 fs-5">实时追踪开源项目热度趋势</p>
             {% if summary %}
-            <span class="badge bg-warning text-dark"><i class="bi bi-clock"></i> 更新于: {{ summary.update_time }}</span>
+            <div class="mt-3">
+                <span class="badge bg-white text-primary bg-opacity-10 border border-white border-opacity-25 px-3 py-2">
+                    <i class="bi bi-calendar-check"></i> 数据日期: {{ summary.date }}
+                </span>
+                <span class="badge bg-warning text-dark px-3 py-2 ms-2">
+                    <i class="bi bi-clock-history"></i> 更新于: {{ summary.update_time }}
+                </span>
+            </div>
             {% endif %}
         </div>
-    </div>
+    </header>
 
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h5 class="text-secondary">数据日期: {{ summary.date if summary else '---' }}</h5>
-            <button onclick="refreshData()" class="btn btn-primary rounded-pill shadow-sm px-4">
-                <i class="bi bi-arrow-repeat"></i> 立即更新全量数据
+    <div class="container" style="margin-top: 10px;">
+        <div class="d-flex justify-content-end mb-4 px-2">
+            <button onclick="refreshData()" class="btn btn-light shadow-sm text-primary fw-bold rounded-pill px-4">
+                <i class="bi bi-arrow-clockwise"></i> 立即更新全网数据
             </button>
         </div>
 
         {% if summary and summary.data %}
-        <ul class="nav nav-pills mb-4 justify-content-center" id="trendTabs" role="tablist">
-            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daily">📅
-                    最近一天</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#weekly">📅
-                    最近一周</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#monthly">📅
-                    最近一月</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#yearly">🏆
-                    最近一年</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#all">🔥 历史全部</button>
-            </li>
-        </ul>
+        <div class="main-card p-4">
+            <ul class="nav nav-pills mb-4 justify-content-center" id="trendTabs" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daily"
+                        onclick="renderChart('daily')">🔥 今日热门</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#weekly"
+                        onclick="renderChart('weekly')">📅 本周趋势</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#monthly"
+                        onclick="renderChart('monthly')">🌙 本月精选</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#yearly"
+                        onclick="renderChart('yearly')">🏆 年度榜单</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#all"
+                        onclick="renderChart('all')">👑 历史总榜</button></li>
+            </ul>
 
-        <div class="tab-content">
-            {% for period in ['daily', 'weekly', 'monthly', 'yearly', 'all'] %}
-            <div class="tab-pane fade {% if period == 'daily' %}show active{% endif %}" id="{{ period }}">
+            <div class="tab-content">
+                {% for period in ['daily', 'weekly', 'monthly', 'yearly', 'all'] %}
                 {% set info = summary.data[period] %}
-                {% if info %}
-                <div class="row g-4">
-                    <div class="col-lg-5">
-                        <div class="card shadow-sm border-0 mb-4 bg-primary text-white">
-                            <div class="card-body p-4">
-                                <h6 class="opacity-75">TOP 1 项目</h6>
-                                <h3 class="fw-bold mb-3 text-break">
-                                    <a href="{{ info.top_repo_url }}" target="_blank"
-                                        class="text-white text-decoration-none">
-                                        <i class="bi bi-link-45deg"></i> {{ info.top_repo_name }}
-                                    </a>
+                <div class="tab-pane fade {% if period == 'daily' %}show active{% endif %}" id="{{ period }}">
+                    {% if info %}
+                    <div class="row g-4">
+                        <div class="col-lg-4">
+                            <div class="top-one-card shadow mb-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <span class="badge bg-warning text-dark mb-2">NO.1 Trending</span>
+                                    <i class="bi bi-trophy-fill fs-4 text-warning"></i>
+                                </div>
+                                <h3 class="fw-bold text-break mb-2">
+                                    <a href="{{ info.top_repo.url }}" target="_blank">{{ info.top_repo.name }}</a>
                                 </h3>
-                                <div class="d-flex justify-content-between">
-                                    <span><i class="bi bi-star-fill"></i> {{ info.top_repo_stars }} Stars</span>
-                                    <span><i class="bi bi-code-slash"></i> {{ info.top_lang }}</span>
+                                <p class="small opacity-75 mb-4 text-truncate">{{ info.top_repo.desc }}</p>
+                                <div class="d-flex justify-content-between text-white-50 small">
+                                    <span><i class="bi bi-code-slash"></i> {{ info.top_repo.language }}</span>
+                                    <span><i class="bi bi-star-fill"></i> {{ info.top_repo.stars_total }}</span>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="fw-bold text-secondary mb-3">🛠️ 语言热度分布</h6>
+                                    <div id="chart-{{ period }}" style="height: 280px;"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card shadow-sm border-0">
-                            <div class="card-body text-center">
-                                <h6 class="text-muted text-start mb-3">编程语言分布</h6>
-                                <img src="{{ url_for('static', filename=info.img_filename) }}" class="img-fluid rounded"
-                                    alt="Chart">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <div class="card shadow-sm border-0 h-100">
-                            <div class="card-header bg-white py-3">
-                                <h6 class="mb-0 fw-bold"><i class="bi bi-list-ol"></i> 排行榜 (Top 10)</h6>
-                            </div>
-                            <div class="list-group list-group-flush">
-                                {% for repo in info.repos %}
-                                <div class="list-group-item repo-item py-3">
-                                    <div class="d-flex w-100 justify-content-between align-items-center">
-                                        <div style="min-width: 0;">
-                                            <h6 class="mb-1 fw-bold text-truncate">
-                                                <span class="text-muted me-2">{{ loop.index }}.</span>
-                                                <a href="{{ repo.url }}" target="_blank" class="repo-link text-primary">
-                                                    {{ repo.name }}
-                                                </a>
-                                            </h6>
-                                            <small class="text-muted"><span class="badge bg-light text-dark border">{{
-                                                    repo.language }}</span></small>
+                        <div class="col-lg-8">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white py-3 border-0">
+                                    <h5 class="mb-0 fw-bold"><i class="bi bi-list-stars text-primary"></i> 排行榜 Top 15
+                                    </h5>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    {% for repo in info.repos %}
+                                    <div class="list-group-item repo-item py-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-1 text-center text-muted fw-bold">{{ loop.index }}</div>
+                                            <div class="col-md-7 col-11">
+                                                <h6 class="mb-1 fw-bold">
+                                                    <a href="{{ repo.url }}" target="_blank"
+                                                        class="text-dark text-decoration-none hover-link">
+                                                        {{ repo.name }}
+                                                    </a>
+                                                </h6>
+                                                <small class="text-muted d-block text-truncate">{{ repo.desc }}</small>
+                                                <div class="mt-1">
+                                                    <span class="badge bg-light text-secondary border me-1">{{
+                                                        repo.language }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-12 mt-2 mt-md-0 text-md-end">
+                                                <div
+                                                    class="d-flex flex-md-column flex-row gap-2 justify-content-md-end">
+                                                    {% if repo.stars_period > 0 %}
+                                                    <div class="stat-badge period" title="本期新增 Star">
+                                                        <i class="bi bi-graph-up-arrow"></i> +{{ repo.stars_period }}
+                                                    </div>
+                                                    {% endif %}
+                                                    <div class="stat-badge total" title="历史总 Star">
+                                                        <i class="bi bi-star-fill"></i> {{ repo.stars_total }}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="fw-bold text-warning ms-2" style="white-space: nowrap;">
-                                            <i class="bi bi-star"></i> {{ repo.stars }}
-                                        </span>
                                     </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="text-center py-5">
+                        <img src="https://cdn-icons-png.flaticon.com/512/7486/7486754.png" width="100"
+                            class="mb-3 opacity-50">
+                        <h5 class="text-muted">该时间段数据暂缺</h5>
+                        <p class="small text-secondary">请点击右上角“立即更新”按钮获取最新数据</p>
+                    </div>
+                    {% endif %}
                 </div>
-                {% else %}
-                <div class="alert alert-warning text-center">
-                    该时间段数据暂未采集，请点击“立即更新”。
-                </div>
-                {% endif %}
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
         {% else %}
-        <div class="text-center py-5">
-            <h3>暂无数据</h3>
-            <p class="text-muted">请点击上方“立即更新全量数据”按钮。</p>
+        <div class="text-center py-5 main-card">
+            <h3 class="fw-light">暂无缓存数据</h3>
+            <p class="text-muted">请点击上方“立即更新全网数据”初始化系统。</p>
         </div>
         {% endif %}
 
-        <footer class="mt-5 mb-3 text-center text-muted small">
-            &copy; 2025 GitHub Trends Project
+        <footer class="mt-5 mb-4 text-center text-muted small">
+            &copy; 2025 GitHub Trends Intelligence | Data source: GitHub Public API & Trending
         </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function refreshData() {
-            if (!confirm("准备开始采集数据？\n(这将抓取 GitHub 链接并修复 Unknown 问题，耗时约 20 秒)")) return;
+        // --- 1. 图表渲染逻辑 ---
+        // 将后端传来的数据注入到 JS 变量中
+        const chartDataMap = {};
+        {% if summary and summary.data %}
+        {% for period, info in summary.data.items() %}
+        chartDataMap['{{ period }}'] = {{ info.chart_data | tojson }};
+        {% endfor %}
+        {% endif %}
 
+        function renderChart(period) {
+            const chartDom = document.getElementById('chart-' + period);
+            if (!chartDom || !chartDataMap[period]) return;
+
+            // 避免重复初始化
+            if (echarts.getInstanceByDom(chartDom)) return;
+
+            const myChart = echarts.init(chartDom);
+            const data = chartDataMap[period];
+
+            const option = {
+                tooltip: { trigger: 'item' },
+                legend: { top: '5%', left: 'center', show: false }, // 隐藏图例让界面更清爽
+                color: ['#764ba2', '#667eea', '#00cdac', '#ff9a9e', '#fbc2eb', '#fad0c4'],
+                series: [
+                    {
+                        name: '语言占比',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: { show: false, position: 'center' },
+                        emphasis: {
+                            label: { show: true, fontSize: 16, fontWeight: 'bold' }
+                        },
+                        data: data
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+
+        // --- 2. 页面加载初始化 ---
+        document.addEventListener('DOMContentLoaded', function () {
+            // 默认渲染第一个 active 的 tab (daily)
+            renderChart('daily');
+        });
+
+        // --- 3. 数据更新 ---
+        function refreshData() {
+            if (!confirm("确定要重新抓取全网数据吗？耗时约 20-30 秒。")) return;
             document.getElementById('loadingMask').style.display = 'flex';
 
             fetch('/run_task', { method: 'POST' })
@@ -213,7 +326,7 @@
                     }
                 })
                 .catch(err => {
-                    alert('网络错误');
+                    alert('网络请求失败');
                     document.getElementById('loadingMask').style.display = 'none';
                 });
         }
