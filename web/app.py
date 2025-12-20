@@ -14,6 +14,16 @@ DATA_DIR = os.path.join(BASE_DIR, "data/processed")
 BIN_DIR = os.path.join(BASE_DIR, "bin")
 
 
+# --- 修正：增加日期格式验证函数 ---
+def is_valid_date(date_text):
+    """验证字符串是否为 YYYY-MM-DD 格式"""
+    try:
+        datetime.datetime.strptime(date_text, "%Y-%m-%d")
+        return True
+    except ValueError:
+        return False
+
+
 def auto_run_task():
     script_path = os.path.join(BIN_DIR, "main.sh")
     try:
@@ -46,8 +56,15 @@ def get_available_dates():
 def index():
     available_dates = get_available_dates()
     today_str = datetime.datetime.now().strftime("%Y-%m-%d")
-    selected_date = request.args.get("date", today_str)
 
+    # --- 修正：安全地获取并验证日期参数 ---
+    raw_date = request.args.get("date", today_str)
+    if is_valid_date(raw_date):
+        selected_date = raw_date
+    else:
+        selected_date = today_str  # 如果格式错误，强制回退到今天
+
+    # 防止用户请求尚未生成的日期
     target_file = os.path.join(DATA_DIR, f"summary_all_{selected_date}.json")
     if not os.path.exists(target_file) and available_dates:
         selected_date = available_dates[0]
@@ -59,20 +76,16 @@ def index():
             with open(target_file, "r", encoding="utf-8") as f:
                 loaded_data = json.load(f)
 
-            # --- 修复：健壮的数据校验，防止 NoneType Error ---
+            # 数据结构完整性校验
             if (
                 isinstance(loaded_data, dict)
                 and "data" in loaded_data
                 and isinstance(loaded_data["data"], dict)
+                and loaded_data["data"]
             ):
-                # 确保 data 不为空
-                if loaded_data["data"]:
-                    data = loaded_data
-                else:
-                    print("[WARN] 数据文件中的 data 字段为空")
+                data = loaded_data
             else:
-                print("[WARN] 数据文件结构不符合预期")
-
+                print("[WARN] 数据文件结构异常或 data 为空")
         except Exception as e:
             print(f"[ERROR] 读取失败: {e}")
 

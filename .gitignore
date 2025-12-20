@@ -11,4 +11,8 @@ data/*
 web/static/reports/*
 web/static/downloads/*
 
-# 注意：如果你想保留 logs 文件夹结构但忽略内容，可以创建一个空的 .gitkeep 文件在 logs 目录下
+# --- 新增：安全忽略项 ---
+# 忽略环境变量配置文件
+.env
+.venv/
+env/
