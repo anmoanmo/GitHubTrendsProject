@@ -2,7 +2,7 @@
     {
         "name": "exo-explore/exo",
         "language": "Python",
-        "stars_total": 33898,
+        "stars_total": 33983,
         "stars_period": 615,
         "url": "https://github.com/exo-explore/exo",
         "desc": "Run your own AI cluster at home with everyday devices 📱💻 🖥️⌚",
@@ -11,7 +11,7 @@
     {
         "name": "lintsinghua/DeepAudit",
         "language": "Python",
-        "stars_total": 1886,
+        "stars_total": 1922,
         "stars_period": 79,
         "url": "https://github.com/lintsinghua/DeepAudit",
         "desc": "DeepAudit：人人拥有的 AI 黑客战队，让漏洞挖掘触手可及。国内首个开源代码漏洞挖掘多智能体系统。小白一键部署运行，自主协作审计 + 自动化沙箱 PoC 验证。支持 Ollama 私有部署 ，一键生成报告。​让安全不再昂贵，让审计不再复杂。",
@@ -20,7 +20,7 @@
     {
         "name": "anthropics/claude-code",
         "language": "Shell",
-        "stars_total": 47284,
+        "stars_total": 47312,
         "stars_period": 339,
         "url": "https://github.com/anthropics/claude-code",
         "desc": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
@@ -29,7 +29,7 @@
     {
         "name": "github/awesome-copilot",
         "language": "JavaScript",
-        "stars_total": 14827,
+        "stars_total": 14859,
         "stars_period": 217,
         "url": "https://github.com/github/awesome-copilot",
         "desc": "Community-contributed instructions, prompts, and configurations to help you make the most of GitHub Copilot.",
@@ -38,7 +38,7 @@
     {
         "name": "swisskyrepo/PayloadsAllTheThings",
         "language": "Python",
-        "stars_total": 72716,
+        "stars_total": 72750,
         "stars_period": 307,
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings",
         "desc": "A list of useful payloads and bypass for Web Application Security and Pentest/CTF",
@@ -47,7 +47,7 @@
     {
         "name": "sgl-project/mini-sglang",
         "language": "Python",
-        "stars_total": 1606,
+        "stars_total": 1623,
         "stars_period": 312,
         "url": "https://github.com/sgl-project/mini-sglang",
         "desc": "No description",
@@ -56,7 +56,7 @@
     {
         "name": "cloudcommunity/Free-Certifications",
         "language": "Other",
-        "stars_total": 46913,
+        "stars_total": 46960,
         "stars_period": 250,
         "url": "https://github.com/cloudcommunity/Free-Certifications",
         "desc": "A curated list of free courses with certifications. Also available at https://free-certifications.com/",
@@ -65,7 +65,7 @@
     {
         "name": "GreyDGL/PentestGPT",
         "language": "Python",
-        "stars_total": 9702,
+        "stars_total": 9721,
         "stars_period": 257,
         "url": "https://github.com/GreyDGL/PentestGPT",
         "desc": "A GPT-empowered penetration testing tool",
@@ -74,7 +74,7 @@
     {
         "name": "NexaAI/nexa-sdk",
         "language": "Go",
-        "stars_total": 6598,
+        "stars_total": 6629,
         "stars_period": 303,
         "url": "https://github.com/NexaAI/nexa-sdk",
         "desc": "Run the latest LLMs and VLMs across GPU, NPU, and CPU with PC (Python/C++) & mobile (Android & iOS) support, running quickly with OpenAI gpt-oss, Granite4, Qwen3VL, Gemma 3n and more.",
@@ -83,7 +83,7 @@
     {
         "name": "astral-sh/ty",
         "language": "Python",
-        "stars_total": 15095,
+        "stars_total": 15110,
         "stars_period": 374,
         "url": "https://github.com/astral-sh/ty",
         "desc": "An extremely fast Python type checker and language server, written in Rust.",
@@ -92,7 +92,7 @@
     {
         "name": "iptv-org/iptv",
         "language": "TypeScript",
-        "stars_total": 105687,
+        "stars_total": 105713,
         "stars_period": 361,
         "url": "https://github.com/iptv-org/iptv",
         "desc": "Collection of publicly available IPTV channels from all over the world",
